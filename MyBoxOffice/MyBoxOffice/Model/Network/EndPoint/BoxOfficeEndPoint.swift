@@ -64,11 +64,11 @@ struct BoxOfficeListParameters: Encodable {
     var parameters: [String: String] {
         [
             "key": key,
-            "targetDate": targetDate,
-            "itemPerPage": itemPerPage ?? "30",
-            "multiMovieYn": multiMovieYn?.value ?? MultiMovieYn.no.value,
-            "repNationCd": repNationCd?.value ?? RepNationCd.korea.value,
-            "wideAreaCd": wideAreaCd ?? "0105001"
+            "targetDt": targetDate,
+            "itemPerPage": itemPerPage ?? "",
+            "multiMovieYn": multiMovieYn?.value ?? "",
+            "repNationCd": repNationCd?.value ?? "",
+            "wideAreaCd": wideAreaCd ?? ""
         ]
     }
     
