@@ -24,7 +24,7 @@ final class NetworkManagerTests: XCTestCase {
         let networkManager = NetworkManager(session: mockSession)
         var movieNm: String?
         let url = "MockDailyBoxOfficeURL"
-        networkManager.request(url: url)
+        networkManager.requestGetAPI(url: url)
             .decode(type: BoxOfficeDTO.self, decoder: JSONDecoder())
             .subscribe { event in
                 guard let data = event.element else { return }

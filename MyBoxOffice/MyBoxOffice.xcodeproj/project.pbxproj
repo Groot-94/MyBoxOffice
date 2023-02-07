@@ -26,6 +26,7 @@
 		37DA7A5929911ACC000B5590 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A5729911AB9000B5590 /* MockURLProtocol.swift */; };
 		37DA7A5A2991206F000B5590 /* MockNetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A062990D03A000B5590 /* MockNetworkData.swift */; };
 		37DA7A5B29912072000B5590 /* MockNetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A062990D03A000B5590 /* MockNetworkData.swift */; };
+		37DA7A602991CBBE000B5590 /* BoxOfficeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A5F2991CBBE000B5590 /* BoxOfficeEndPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		37DA7A522990EAF9000B5590 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		37DA7A552990F533000B5590 /* MovieInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoDTO.swift; sourceTree = "<group>"; };
 		37DA7A5729911AB9000B5590 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		37DA7A5F2991CBBE000B5590 /* BoxOfficeEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeEndPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				37DA7A0C2990D2D9000B5590 /* NetworkManager.swift */,
+				37DA7A5E2991CB9C000B5590 /* EndPoint */,
 				37DA7A542990F520000B5590 /* DTO */,
 			);
 			path = Network;
@@ -205,6 +208,14 @@
 				37DA7A552990F533000B5590 /* MovieInfoDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		37DA7A5E2991CB9C000B5590 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				37DA7A5F2991CBBE000B5590 /* BoxOfficeEndPoint.swift */,
+			);
+			path = EndPoint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +337,7 @@
 				37DA79DF2990C69B000B5590 /* SceneDelegate.swift in Sources */,
 				37DA7A5A2991206F000B5590 /* MockNetworkData.swift in Sources */,
 				37DA7A532990EAF9000B5590 /* Date+Extension.swift in Sources */,
+				37DA7A602991CBBE000B5590 /* BoxOfficeEndPoint.swift in Sources */,
 				37DA7A5929911ACC000B5590 /* MockURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

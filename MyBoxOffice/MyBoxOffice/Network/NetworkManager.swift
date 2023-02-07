@@ -16,7 +16,7 @@ struct NetworkManager {
             self.session = session
     }
     
-    func request(url: String, parameters: Parameters? = nil) -> Observable<Data> {
+    func requestGetAPI(url: String, parameters: Parameters? = nil) -> Observable<Data> {
         return Observable<Data>.create { observer in
             session
                 .request(url, method: .get, parameters: parameters)
