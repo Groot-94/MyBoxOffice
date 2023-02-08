@@ -20,14 +20,14 @@ protocol BoxOfficeListViewModelInput {
 }
 
 protocol BoxOfficeListViewModelOutput {
-    var fetchedData: Observable<[DailyBoxOffice]> { get }
+    var fetchedData: Observable<[DailyBoxOfficeModel]> { get }
 }
 
 struct BoxOfficeListViewModel: BoxOfficeViewModelable {
     var input: BoxOfficeListViewModelInput { self }
     var output: BoxOfficeListViewModelOutput { self}
     private let disposeBag = DisposeBag()
-    private var dailyBoxOffices = BehaviorRelay<[DailyBoxOffice]>(value: [])
+    private var dailyBoxOffices = BehaviorRelay<[DailyBoxOfficeModel]>(value: [])
 }
 
 extension BoxOfficeListViewModel: BoxOfficeRepository {
@@ -53,7 +53,7 @@ extension BoxOfficeListViewModel: BoxOfficeListViewModelInput {
 }
 
 extension BoxOfficeListViewModel: BoxOfficeListViewModelOutput {
-    var fetchedData: RxSwift.Observable<[DailyBoxOffice]> {
+    var fetchedData: RxSwift.Observable<[DailyBoxOfficeModel]> {
         return dailyBoxOffices.asObservable()
     }
 }

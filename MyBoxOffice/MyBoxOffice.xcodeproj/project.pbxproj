@@ -30,6 +30,7 @@
 		37DA7A652991D641000B5590 /* BoxOfficeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A642991D641000B5590 /* BoxOfficeListViewModel.swift */; };
 		37DA7A672991E7A9000B5590 /* BoxOfficeListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A662991E7A9000B5590 /* BoxOfficeListViewModelTests.swift */; };
 		37DA7A7129936454000B5590 /* BoxOfficeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A7029936454000B5590 /* BoxOfficeRepository.swift */; };
+		37DA7A7D29937995000B5590 /* DailyBoxOfficeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A7C29937995000B5590 /* DailyBoxOfficeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		37DA7A642991D641000B5590 /* BoxOfficeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeListViewModel.swift; sourceTree = "<group>"; };
 		37DA7A662991E7A9000B5590 /* BoxOfficeListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeListViewModelTests.swift; sourceTree = "<group>"; };
 		37DA7A7029936454000B5590 /* BoxOfficeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeRepository.swift; sourceTree = "<group>"; };
+		37DA7A7C29937995000B5590 /* DailyBoxOfficeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyBoxOfficeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +285,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		37DA7A7E2993799F000B5590 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				37DA7A7C29937995000B5590 /* DailyBoxOfficeModel.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -399,6 +409,7 @@
 				37DA7A652991D641000B5590 /* BoxOfficeListViewModel.swift in Sources */,
 				37DA79F52990CB1F000B5590 /* BoxOfficeDTO.swift in Sources */,
 				37DA7A0D2990D2D9000B5590 /* NetworkManager.swift in Sources */,
+				37DA7A7D29937995000B5590 /* DailyBoxOfficeModel.swift in Sources */,
 				37DA79DD2990C69B000B5590 /* AppDelegate.swift in Sources */,
 				37DA79DF2990C69B000B5590 /* SceneDelegate.swift in Sources */,
 				37DA7A5A2991206F000B5590 /* MockNetworkData.swift in Sources */,

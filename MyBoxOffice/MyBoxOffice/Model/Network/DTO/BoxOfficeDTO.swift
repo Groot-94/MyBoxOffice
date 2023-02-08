@@ -12,10 +12,10 @@ struct BoxOfficeDTO: Decodable {
 struct BoxOfficeResultDTO: Decodable {
     let boxofficeType: String
     let showRange: String
-    let dailyBoxOfficeList: [DailyBoxOffice]
+    let dailyBoxOfficeList: [DailyBoxOfficeDTO]
 }
 
-struct DailyBoxOffice: Decodable{
+struct DailyBoxOfficeDTO: Decodable{
     let rnum: String
     let rank: String
     let rankInten: String
@@ -34,6 +34,18 @@ struct DailyBoxOffice: Decodable{
     let audiAcc: String
     let scrnCnt: String
     let showCnt: String
+}
+
+extension DailyBoxOfficeDTO {
+    func toDomain() -> DailyBoxOfficeModel {
+        DailyBoxOfficeModel(rank: self.rank,
+                            rankIncrement: self.rankInten,
+                            rankOldAndNew: self.rankOldAndNew,
+                            movieCode: self.movieCd,
+                            movieName: self.movieNm,
+                            audienceCount: self.audiCnt,
+                            audienceAccumulate: self.audiAcc)
+    }
 }
 
 enum RankOldAndNew: String, Decodable {

@@ -12,7 +12,7 @@ import RxSwift
 final class BoxOfficeListViewModelTests: XCTestCase {
     var sut: BoxOfficeViewModelable!
     var disposeBag: DisposeBag!
-    var fetchDatas: [DailyBoxOffice]?
+    var fetchDatas: [DailyBoxOfficeModel]?
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -28,13 +28,13 @@ final class BoxOfficeListViewModelTests: XCTestCase {
     
     func test_ViewDidLoad() {
         let expectation = expectation(description: "비동기 처리")
-        var movieNm: String?
+        var movieName: String?
         //given
         let date = DateComponents(calendar: Calendar.current, year: 2023, month: 02, day: 06).date!
         sut.output.fetchedData
             .skip(1)
             .subscribe { list in
-                movieNm = list.element?.first?.movieNm
+                movieName = list.first?.movieName
                 expectation.fulfill()
             }.disposed(by: disposeBag)
         
@@ -44,6 +44,6 @@ final class BoxOfficeListViewModelTests: XCTestCase {
         
         //then
         waitForExpectations(timeout: 3)
-        XCTAssertEqual(result, movieNm)
+        XCTAssertEqual(result, movieName)
     }
 }

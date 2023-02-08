@@ -24,41 +24,41 @@ struct MovieDetailDTO: Decodable {
         let openDt: String
         let prdtStatNm: String
         let typeNm: String
-        let nations: [Nation]
-        let genres: [Genre]
-        let directors: [Director]
-        let actors: [Actor]
-        let showTypes: [ShowType]
-        let companys: [Company]
-        let audits: [Audit]
+        let nations: [NationDTO]
+        let genres: [GenreDTO]
+        let directors: [DirectorDTO]
+        let actors: [ActorDTO]
+        let showTypes: [ShowTypeDTO]
+        let companys: [CompanyDTO]
+        let audits: [AuditDTO]
 }
 
-struct Nation: Decodable {
+struct NationDTO: Decodable {
     let nationNm: String
 }
 
-struct Genre: Decodable {
+struct GenreDTO: Decodable {
     let genreNm: String
 }
 
-struct Director: Decodable {
+struct DirectorDTO: Decodable {
     let peopleNm: String
 }
 
-struct Actor: Decodable {
+struct ActorDTO: Decodable {
     let peopleNm: String
 }
 
-struct Audit: Decodable {
+struct AuditDTO: Decodable {
     let watchGradeNm: String
 }
 
-struct ShowType: Decodable {
+struct ShowTypeDTO: Decodable {
     let showTypeGroupNm: String
     let showTypeNm: String
 }
 
-struct Company: Decodable {
+struct CompanyDTO: Decodable {
     let companyCd: String
     let companyNm: String
     let companyNmEn: String
