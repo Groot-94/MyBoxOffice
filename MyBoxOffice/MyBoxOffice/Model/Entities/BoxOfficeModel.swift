@@ -1,11 +1,11 @@
 //
-//  DailyBoxOfficeModel.swift
+//  BoxOfficeModel.swift
 //  MyBoxOffice
 //
 //  Created by Groot on 2023/02/08.
 //
 
-struct DailyBoxOfficeModel {
+struct BoxOfficeModel {
     let rank: String
     let rankIncrement: String
     let rankOldAndNew: RankOldAndNew

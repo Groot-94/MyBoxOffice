@@ -19,9 +19,9 @@ final class BoxOfficeListViewModelTests: XCTestCase {
         sut = BoxOfficeListViewModel()
         disposeBag = DisposeBag()
     }
-
+    
     override func tearDownWithError() throws {
-       try super.tearDownWithError()
+        try super.tearDownWithError()
         sut = nil
         disposeBag = nil
     }
@@ -30,7 +30,6 @@ final class BoxOfficeListViewModelTests: XCTestCase {
         let expectation = expectation(description: "비동기 처리")
         var movieName: String?
         //given
-        let date = DateComponents(calendar: Calendar.current, year: 2023, month: 02, day: 06).date!
         sut.output.fetchedData
             .skip(1)
             .subscribe { list in
@@ -39,7 +38,7 @@ final class BoxOfficeListViewModelTests: XCTestCase {
             }.disposed(by: disposeBag)
         
         //when
-        sut.input.viewDidLoad(date: date)
+        sut.input.viewWillAppear()
         let result = "더 퍼스트 슬램덩크"
         
         //then

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol BoxOfficeRepository {
-    func readDailyBoxOffice(endPoint: BoxOfficeEndPoint) -> Observable<[DailyBoxOfficeModel]>
+    func readDailyBoxOffice(endPoint: BoxOfficeEndPoint) -> Observable<[BoxOfficeModel]>
 }
 
 extension BoxOfficeRepository {
@@ -17,13 +17,9 @@ extension BoxOfficeRepository {
         NetworkManager()
     }
     
-    func readDailyBoxOffice(endPoint: BoxOfficeEndPoint) -> Observable<[DailyBoxOfficeModel]> {
+    func readDailyBoxOffice(endPoint: BoxOfficeEndPoint) -> Observable<[BoxOfficeModel]> {
         netWorkManager.requestGetAPI(url: endPoint.url, parameters: endPoint.parameters)
             .decode(type: BoxOfficeDTO.self, decoder: JSONDecoder())
-            .map { boxOffice in
-                boxOffice.boxOfficeResult.dailyBoxOfficeList.map { dailyBoxOffice in
-                    dailyBoxOffice.toDomain()
-                }
-            }
+            .map { $0.boxOfficeResult.dailyBoxOfficeList.map { $0.toDomain() } }
     }
 }

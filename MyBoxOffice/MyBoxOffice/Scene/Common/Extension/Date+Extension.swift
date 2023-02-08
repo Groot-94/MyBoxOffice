@@ -9,13 +9,17 @@ import Foundation
 
 extension Date {
     var convertBoxOfficeVersion: String {
-        let myDateFormatter = DateFormatter()
-        myDateFormatter.dateFormat = "yyyyMMdd"
-        
-        return myDateFormatter.string(from: self)
+        return self.toString(form: "yyyyMMdd")
     }
     
     var yesterday: String {
         self.addingTimeInterval(-86400).convertBoxOfficeVersion
+    }
+    
+    func toString(form: String) -> String {
+        let myDateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = form
+        
+        return myDateFormatter.string(from: self)
     }
 }

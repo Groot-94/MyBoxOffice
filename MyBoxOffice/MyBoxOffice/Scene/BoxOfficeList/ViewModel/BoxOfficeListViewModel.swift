@@ -12,48 +12,64 @@ import RxRelay
 protocol BoxOfficeViewModelable {
     var input: BoxOfficeListViewModelInput { get }
     var output: BoxOfficeListViewModelOutput { get }
+    var targetDate: Date { get }
 }
 
 protocol BoxOfficeListViewModelInput {
-    func viewDidLoad(date: Date)
-    func refreshList(date: Date)
+    func viewWillAppear()
+    func refreshList()
 }
 
 protocol BoxOfficeListViewModelOutput {
-    var fetchedData: Observable<[DailyBoxOfficeModel]> { get }
+    var fetchedData: Observable<[BoxOfficeModel]> { get }
+    var viewWillApperLoading: Observable<Void> { get }
+    var refreshListLoading: Observable<Bool> { get }
 }
 
 struct BoxOfficeListViewModel: BoxOfficeViewModelable {
-    var input: BoxOfficeListViewModelInput { self }
-    var output: BoxOfficeListViewModelOutput { self}
     private let disposeBag = DisposeBag()
-    private var dailyBoxOffices = BehaviorRelay<[DailyBoxOfficeModel]>(value: [])
+    private let dailyBoxOffices = BehaviorRelay<[BoxOfficeModel]>(value: [])
+    private let postEndLoding = PublishSubject<Void>()
+    private let postEndRefreshLoading = PublishSubject<Bool>()
+    let targetDate = Date()
+    var input: BoxOfficeListViewModelInput { self }
+    var output: BoxOfficeListViewModelOutput { self }
 }
 
 extension BoxOfficeListViewModel: BoxOfficeRepository {
-    private func fetchData(_ date: Date) {
-        let yesterdayDate = date.yesterday
+    private func fetchData() {
+        let yesterdayDate = targetDate.yesterday
         let endPoint = BoxOfficeEndPoint.dailyBoxOfficeList(BoxOfficeListParameters(targetDate: yesterdayDate,
                                                                                     itemPerPage: "10"))
         readDailyBoxOffice(endPoint: endPoint)
             .subscribe { list in
                 dailyBoxOffices.accept(list)
+                postEndLoding.onNext(())
+                postEndRefreshLoading.onNext(false)
             }.disposed(by: disposeBag)
     }
 }
 
 extension BoxOfficeListViewModel: BoxOfficeListViewModelInput {
-    func viewDidLoad(date: Date) {
-        fetchData(date)
+    func viewWillAppear() {
+        fetchData()
     }
     
-    func refreshList(date: Date) {
-        fetchData(date)
+    func refreshList() {
+        fetchData()
     }
 }
 
 extension BoxOfficeListViewModel: BoxOfficeListViewModelOutput {
-    var fetchedData: RxSwift.Observable<[DailyBoxOfficeModel]> {
-        return dailyBoxOffices.asObservable()
+    var fetchedData: Observable<[BoxOfficeModel]> {
+        dailyBoxOffices.asObservable()
+    }
+    
+    var viewWillApperLoading: Observable<Void> {
+        postEndLoding.asObservable()
+    }
+    
+    var refreshListLoading: Observable<Bool> {
+        postEndRefreshLoading.asObservable()
     }
 }
