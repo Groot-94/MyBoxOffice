@@ -12,7 +12,7 @@ import RxSwift
 final class BoxOfficeListViewModelTests: XCTestCase {
     var sut: BoxOfficeViewModelable!
     var disposeBag: DisposeBag!
-    var fetchDatas: [DailyBoxOfficeModel]?
+    var fetchDatas: [BoxOfficeModel]?
     
     override func setUpWithError() throws {
         try super.setUpWithError()

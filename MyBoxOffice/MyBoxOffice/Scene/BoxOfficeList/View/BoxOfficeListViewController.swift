@@ -62,7 +62,9 @@ final class BoxOfficeListViewController: UIViewController {
         
         listView.listCollectionView.rx.modelSelected(BoxOfficeModel.self)
             .bind(onNext: { [weak self] model in
-                self?.coodinator?.showMovieDetail(MovieCode: model.movieCode)
+                guard let self = self else { return }
+                
+                self.coodinator?.showMovieInfo(movieCode: model.movieCode)
             })
             .disposed(by: disposeBag)
     }
