@@ -26,12 +26,12 @@ protocol BoxOfficeListViewModelOutput {
     var refreshListLoading: Observable<Bool> { get }
 }
 
-struct BoxOfficeListViewModel: BoxOfficeViewModelable {
+final class BoxOfficeListViewModel: BoxOfficeViewModelable {
     private let disposeBag = DisposeBag()
     private let dailyBoxOffices = BehaviorRelay<[BoxOfficeModel]>(value: [])
     private let postEndLoding = PublishSubject<Void>()
     private let postEndRefreshLoading = PublishSubject<Bool>()
-    let targetDate = Date()
+    var targetDate = Date()
     var input: BoxOfficeListViewModelInput { self }
     var output: BoxOfficeListViewModelOutput { self }
 }
@@ -42,10 +42,10 @@ extension BoxOfficeListViewModel: BoxOfficeRepository {
         let endPoint = BoxOfficeEndPoint.dailyBoxOfficeList(BoxOfficeListParameters(targetDate: yesterdayDate,
                                                                                     itemPerPage: "10"))
         readDailyBoxOffice(endPoint: endPoint)
-            .subscribe { list in
-                dailyBoxOffices.accept(list)
-                postEndLoding.onNext(())
-                postEndRefreshLoading.onNext(false)
+            .subscribe { [weak self] list in
+                self?.dailyBoxOffices.accept(list)
+                self?.postEndLoding.onNext(())
+                self?.postEndRefreshLoading.onNext(false)
             }.disposed(by: disposeBag)
     }
 }
@@ -71,5 +71,12 @@ extension BoxOfficeListViewModel: BoxOfficeListViewModelOutput {
     
     var refreshListLoading: Observable<Bool> {
         postEndRefreshLoading.asObservable()
+    }
+}
+
+extension BoxOfficeListViewModel: DateSelectViewModelDelegate {
+    func dateSelectViewModel(didTapedDate date: Date) {
+        targetDate = date
+        fetchData()
     }
 }

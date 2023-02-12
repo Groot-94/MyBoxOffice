@@ -33,7 +33,8 @@ final class MainCoordinator: Coordinator {
     
     func start() {
         let boxOfficeListCoodinator = BoxOfficeListCoodinator(parentCoordinator: self,
-                                                              navigationController: navigationController)
+                                                              navigationController: navigationController,
+                                                              viewModel: BoxOfficeListViewModel())
         childCoordinators.append(boxOfficeListCoodinator)
         childCoordinators.first?.start()
     }

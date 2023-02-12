@@ -48,6 +48,9 @@
 		37DA7AAE2998CF75000B5590 /* NaverSearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AAD2998CF75000B5590 /* NaverSearchEndPoint.swift */; };
 		37DA7AB02998D4E6000B5590 /* NaverImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AAF2998D4E6000B5590 /* NaverImageDTO.swift */; };
 		37DA7AB22998FCC1000B5590 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AB12998FCC1000B5590 /* String+Extension.swift */; };
+		37DA7AB829990580000B5590 /* DateSelectCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AB729990580000B5590 /* DateSelectCoodinator.swift */; };
+		37DA7ABA299905D7000B5590 /* DateSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AB9299905D7000B5590 /* DateSelectViewController.swift */; };
+		37DA7ABC29990645000B5590 /* DateSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7ABB29990645000B5590 /* DateSelectViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +64,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		37DA79D92990C69A000B5590 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MyBoxOffice.app; path = "/Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug-iphoneos/MyBoxOffice.app"; sourceTree = "<absolute>"; };
 		37DA79DC2990C69B000B5590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37DA79DE2990C69B000B5590 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		37DA79E02990C69B000B5590 /* BoxOfficeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeListViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +76,6 @@
 		37DA7A062990D03A000B5590 /* MockNetworkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkData.swift; sourceTree = "<group>"; };
 		37DA7A0C2990D2D9000B5590 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		37DA7A212990D8F6000B5590 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
-		37DA7A422990E04B000B5590 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyBoxOfficeTests.xctest; path = /Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug/MyBoxOfficeTests.xctest; sourceTree = "<absolute>"; };
 		37DA7A522990EAF9000B5590 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		37DA7A552990F533000B5590 /* MovieDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDTO.swift; sourceTree = "<group>"; };
 		37DA7A5729911AB9000B5590 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
@@ -99,6 +100,11 @@
 		37DA7AAD2998CF75000B5590 /* NaverSearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverSearchEndPoint.swift; sourceTree = "<group>"; };
 		37DA7AAF2998D4E6000B5590 /* NaverImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverImageDTO.swift; sourceTree = "<group>"; };
 		37DA7AB12998FCC1000B5590 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		37DA7AB729990580000B5590 /* DateSelectCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectCoodinator.swift; sourceTree = "<group>"; };
+		37DA7AB9299905D7000B5590 /* DateSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectViewController.swift; sourceTree = "<group>"; };
+		37DA7ABB29990645000B5590 /* DateSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectViewModel.swift; sourceTree = "<group>"; };
+		37DA7AE6299A0FED000B5590 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MyBoxOffice.app; path = "/Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug-iphoneos/MyBoxOffice.app"; sourceTree = "<absolute>"; };
+		37DA7AE7299A0FED000B5590 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyBoxOfficeTests.xctest; path = /Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug/MyBoxOfficeTests.xctest; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +136,6 @@
 			children = (
 				37DA79DB2990C69A000B5590 /* MyBoxOffice */,
 				37DA7A432990E04B000B5590 /* MyBoxOfficeTests */,
-				37DA7AA82997736A000B5590 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +166,7 @@
 			children = (
 				37DA7A612991D5FF000B5590 /* BoxOfficeList */,
 				37DA7A862993D8FE000B5590 /* MovieInfo */,
+				37DA7AB3299904F2000B5590 /* DateSelect */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -384,11 +390,38 @@
 			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
-		37DA7AA82997736A000B5590 /* Frameworks */ = {
+		37DA7AB3299904F2000B5590 /* DateSelect */ = {
 			isa = PBXGroup;
 			children = (
+				37DA7AB429990512000B5590 /* Coodinator */,
+				37DA7AB52999051A000B5590 /* ViewModel */,
+				37DA7AB629990520000B5590 /* View */,
 			);
-			name = Frameworks;
+			path = DateSelect;
+			sourceTree = "<group>";
+		};
+		37DA7AB429990512000B5590 /* Coodinator */ = {
+			isa = PBXGroup;
+			children = (
+				37DA7AB729990580000B5590 /* DateSelectCoodinator.swift */,
+			);
+			path = Coodinator;
+			sourceTree = "<group>";
+		};
+		37DA7AB52999051A000B5590 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				37DA7ABB29990645000B5590 /* DateSelectViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		37DA7AB629990520000B5590 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				37DA7AB9299905D7000B5590 /* DateSelectViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,7 +448,7 @@
 				37DA7A74299369D2000B5590 /* SnapKit */,
 			);
 			productName = MyBoxOffice;
-			productReference = 37DA79D92990C69A000B5590 /* MyBoxOffice.app */;
+			productReference = 37DA7AE6299A0FED000B5590 /* MyBoxOffice.app */;
 			productType = "com.apple.product-type.application";
 		};
 		37DA7A412990E04B000B5590 /* MyBoxOfficeTests */ = {
@@ -436,7 +469,7 @@
 				37DA7AA92997736A000B5590 /* RxCocoa */,
 			);
 			productName = MyBoxOfficeTests;
-			productReference = 37DA7A422990E04B000B5590 /* MyBoxOfficeTests.xctest */;
+			productReference = 37DA7AE7299A0FED000B5590 /* MyBoxOfficeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -512,6 +545,7 @@
 				37DA7A562990F533000B5590 /* MovieDTO.swift in Sources */,
 				37DA7A652991D641000B5590 /* BoxOfficeListViewModel.swift in Sources */,
 				37DA79F52990CB1F000B5590 /* BoxOfficeDTO.swift in Sources */,
+				37DA7ABC29990645000B5590 /* DateSelectViewModel.swift in Sources */,
 				37DA7A0D2990D2D9000B5590 /* NetworkManager.swift in Sources */,
 				37DA7AB22998FCC1000B5590 /* String+Extension.swift in Sources */,
 				37DA7A822993CF52000B5590 /* Coodinator.swift in Sources */,
@@ -525,8 +559,10 @@
 				37DA7A9D299767B5000B5590 /* MovieInfoModel.swift in Sources */,
 				37DA7AAC2997DFA1000B5590 /* MovieInfoView.swift in Sources */,
 				37DA7A7B29936E7D000B5590 /* ViewSettingProtocol.swift in Sources */,
+				37DA7ABA299905D7000B5590 /* DateSelectViewController.swift in Sources */,
 				37DA7A7929936BE4000B5590 /* BoxOfficeCollectionViewCell.swift in Sources */,
 				37DA7A9729952898000B5590 /* MovieInfoViewModel.swift in Sources */,
+				37DA7AB829990580000B5590 /* DateSelectCoodinator.swift in Sources */,
 				37DA7A532990EAF9000B5590 /* Date+Extension.swift in Sources */,
 				37DA7A7129936454000B5590 /* BoxOfficeRepository.swift in Sources */,
 				37DA7A602991CBBE000B5590 /* BoxOfficeEndPoint.swift in Sources */,

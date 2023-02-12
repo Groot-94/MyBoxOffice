@@ -19,6 +19,7 @@ final class MovieInfoViewController: UIViewController {
     let activityIndicatorView = UIActivityIndicatorView(style: .large)
     
     init(coodinator: MovieInfoCoodinator? = nil, viewModel: MovieInfoViewModelable) {
+        self.coodinator = coodinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

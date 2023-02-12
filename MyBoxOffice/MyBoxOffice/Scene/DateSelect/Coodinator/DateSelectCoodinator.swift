@@ -1,22 +1,22 @@
 //
-//  MovieInfoCoodinator.swift
+//  DateSelectCoodinator.swift
 //  MyBoxOffice
 //
-//  Created by Groot on 2023/02/09.
+//  Created by Groot on 2023/02/12.
 //
 
 import UIKit
 
-final class MovieInfoCoodinator: Coordinator {
+final class DateSelectCoodinator: Coordinator {
     var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator]
     var navigationController: UINavigationController
-    var viewModel: MovieInfoViewModelable?
+    var viewModel: DateSelectViewModelable?
     
     init(parentCoordinator: Coordinator? = nil,
          childCoordinators: [Coordinator] = [Coordinator](),
          navigationController: UINavigationController,
-         viewModel: MovieInfoViewModelable) {
+         viewModel: DateSelectViewModelable) {
         self.parentCoordinator = parentCoordinator
         self.childCoordinators = childCoordinators
         self.navigationController = navigationController
@@ -26,8 +26,8 @@ final class MovieInfoCoodinator: Coordinator {
     func start() {
         guard let viewModel = viewModel else { return }
         
-        let movieInfoViewController = MovieInfoViewController(coodinator: self,
-                                                              viewModel: viewModel)
-        navigationController.pushViewController(movieInfoViewController, animated: true)
+        let dateSelectViewController = DateSelectViewController(coodinator: self,
+                                                                viewModel: viewModel)
+        navigationController.present(dateSelectViewController, animated: true)
     }
 }

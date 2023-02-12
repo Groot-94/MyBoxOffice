@@ -11,18 +11,21 @@ final class BoxOfficeListCoodinator: Coordinator {
     weak var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator]
     var navigationController: UINavigationController
+    var viewModel: BoxOfficeViewModelable
     
     init(parentCoordinator: Coordinator? = nil,
          childCoordinators: [Coordinator] = [Coordinator](),
-         navigationController: UINavigationController) {
+         navigationController: UINavigationController,
+         viewModel: BoxOfficeViewModelable) {
         self.parentCoordinator = parentCoordinator
         self.childCoordinators = childCoordinators
         self.navigationController = navigationController
+        self.viewModel = viewModel
     }
     
     func start() {
         let boxOfficeListViewController = BoxOfficeListViewController(coodinator: self,
-                                                                      viewModel: BoxOfficeListViewModel())
+                                                                      viewModel: viewModel)
         boxOfficeListViewController.coodinator = self
         navigationController.pushViewController(boxOfficeListViewController, animated: true)
     }
@@ -34,7 +37,17 @@ extension BoxOfficeListCoodinator {
                                                       navigationController: navigationController,
                                                       viewModel: MovieInfoViewModel(movieCode: movieCode))
         childCoordinators.append(movieInfoCoodinator)
-        childCoordinators.first?.start()
+        movieInfoCoodinator.start()
+    }
+    
+    func showDateSelect(currentDate: Date) {
+        let dateSelectViewModel = DateSelectViewModel(targetDate: currentDate)
+        let dateSelectCoodinator = DateSelectCoodinator(parentCoordinator: self,
+                                                        navigationController: navigationController,
+                                                        viewModel: dateSelectViewModel)
+        dateSelectViewModel.delegate = viewModel as? DateSelectViewModelDelegate
+        childCoordinators.append(dateSelectCoodinator)
+        dateSelectCoodinator.start()
     }
 }
 

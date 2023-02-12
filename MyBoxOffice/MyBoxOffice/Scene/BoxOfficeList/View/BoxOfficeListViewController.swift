@@ -54,6 +54,7 @@ final class BoxOfficeListViewController: UIViewController {
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
                 
+                self.configureNavigationTitle(self.viewModel.targetDate.toString(form: "yyyy-MM-dd"))
                 self.endLodingView(showView: self.listView)
             }.disposed(by: disposeBag)
         
@@ -70,6 +71,10 @@ final class BoxOfficeListViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    private func configureNavigationTitle(_ text: String) {
+        navigationController?.navigationBar.topItem?.title = text
+    }
 }
 
 extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
@@ -80,10 +85,17 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
     }
     
     private func configureNavigationView() {
-        navigationController?.navigationBar.topItem?.title = viewModel.targetDate.toString(form: "yyyy-MM-dd")
+        let dateSelectBarButton = UIBarButtonItem(title: "날짜선택", image: nil, target: self, action: #selector(didTapDateSelectButton))
+        dateSelectBarButton.tintColor = .black
         let backBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
-        self.navigationItem.backBarButtonItem = backBarButtonItem
+        navigationItem.rightBarButtonItem = dateSelectBarButton
+        navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    @objc
+    private func didTapDateSelectButton() {
+        coodinator?.showDateSelect(currentDate: viewModel.targetDate)
     }
     
     private func configureRefreshControl() {
