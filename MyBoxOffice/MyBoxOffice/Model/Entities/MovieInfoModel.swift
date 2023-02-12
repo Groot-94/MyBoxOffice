@@ -11,11 +11,41 @@ struct MovieInfoModel {
     let showTime: String
     let productYear: String
     let openDate: String
-    let typeName: String
     let nations: [NationModel]
-    let genresName: [GenreModel]
+    let genres: [GenreModel]
     let directors: [DirectorModel]
+    let audits: [AuditModel]
     let actors: [ActorModel]
+    
+    var nationsNames: String {
+        nations
+            .map { $0.nationName }
+            .joined(separator: ",")
+    }
+    
+    var genresNames: String {
+        genres
+            .map { $0.genreName }
+            .joined(separator: ",")
+    }
+    
+    var directorsNames: String {
+        directors
+            .map { $0.peopleName }
+            .joined(separator: ",")
+    }
+    
+    var watchGradeNames: String {
+        audits
+            .map { $0.watchGradeName }
+            .joined(separator: ",")
+    }
+    
+    var actorsNames: String {
+        actors
+            .map { $0.peopleName }
+            .joined(separator: ",")
+    }
 }
 
 struct NationModel {
@@ -27,9 +57,13 @@ struct GenreModel {
 }
 
 struct DirectorModel {
-    let peopleNm: String
+    let peopleName: String
+}
+
+struct AuditModel {
+    let watchGradeName: String
 }
 
 struct ActorModel {
-    let peopleNm: String
+    let peopleName: String
 }

@@ -16,10 +16,10 @@ struct NetworkManager {
             self.session = session
     }
     
-    func requestGetAPI(url: String, parameters: Parameters? = nil) -> Observable<Data> {
+    func requestGetAPI(url: String, parameters: Parameters? = nil, headers: HTTPHeaders? = nil) -> Observable<Data> {
         return Observable<Data>.create { observer in
             session
-                .request(url, method: .get, parameters: parameters)
+                .request(url, method: .get, parameters: parameters, headers: headers)
                 .validate(statusCode: 200...299)
                 .response { (response) in
                     guard let optionalData = response.value,

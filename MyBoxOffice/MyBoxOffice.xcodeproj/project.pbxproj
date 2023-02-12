@@ -44,6 +44,9 @@
 		37DA7AA429977093000B5590 /* MockNetworkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A062990D03A000B5590 /* MockNetworkData.swift */; };
 		37DA7AA529977097000B5590 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7A5729911AB9000B5590 /* MockURLProtocol.swift */; };
 		37DA7AAA2997736A000B5590 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 37DA7AA92997736A000B5590 /* RxCocoa */; };
+		37DA7AAC2997DFA1000B5590 /* MovieInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AAB2997DFA1000B5590 /* MovieInfoView.swift */; };
+		37DA7AAE2998CF75000B5590 /* NaverSearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AAD2998CF75000B5590 /* NaverSearchEndPoint.swift */; };
+		37DA7AB02998D4E6000B5590 /* NaverImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AAF2998D4E6000B5590 /* NaverImageDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		37DA7A9A29976761000B5590 /* MovieInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoRepository.swift; sourceTree = "<group>"; };
 		37DA7A9C299767B5000B5590 /* MovieInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoModel.swift; sourceTree = "<group>"; };
 		37DA7AA029976EA6000B5590 /* MovieInfoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewModelTests.swift; sourceTree = "<group>"; };
+		37DA7AAB2997DFA1000B5590 /* MovieInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
+		37DA7AAD2998CF75000B5590 /* NaverSearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverSearchEndPoint.swift; sourceTree = "<group>"; };
+		37DA7AAF2998D4E6000B5590 /* NaverImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverImageDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +158,7 @@
 			children = (
 				37DA7A8F2993DF07000B5590 /* Common */,
 				37DA7A612991D5FF000B5590 /* BoxOfficeList */,
-				37DA7A862993D8FE000B5590 /* MovieDetail */,
+				37DA7A862993D8FE000B5590 /* MovieInfo */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -227,6 +233,7 @@
 			children = (
 				37DA79F42990CB1F000B5590 /* BoxOfficeDTO.swift */,
 				37DA7A552990F533000B5590 /* MovieDTO.swift */,
+				37DA7AAF2998D4E6000B5590 /* NaverImageDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -235,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				37DA7A5F2991CBBE000B5590 /* BoxOfficeEndPoint.swift */,
+				37DA7AAD2998CF75000B5590 /* NaverSearchEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -311,14 +319,14 @@
 			path = Coodinator;
 			sourceTree = "<group>";
 		};
-		37DA7A862993D8FE000B5590 /* MovieDetail */ = {
+		37DA7A862993D8FE000B5590 /* MovieInfo */ = {
 			isa = PBXGroup;
 			children = (
 				37DA7A892993D934000B5590 /* Coodinator */,
 				37DA7A8B2993D946000B5590 /* ViewModel */,
 				37DA7A8C2993D94B000B5590 /* View */,
 			);
-			path = MovieDetail;
+			path = MovieInfo;
 			sourceTree = "<group>";
 		};
 		37DA7A882993D929000B5590 /* Protocol */ = {
@@ -350,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				37DA7A98299528B7000B5590 /* MovieInfoViewController.swift */,
+				37DA7AAB2997DFA1000B5590 /* MovieInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -506,15 +515,18 @@
 				37DA7A8029939A49000B5590 /* LodingViewProtocol.swift in Sources */,
 				37DA79DD2990C69B000B5590 /* AppDelegate.swift in Sources */,
 				37DA7A9B29976761000B5590 /* MovieInfoRepository.swift in Sources */,
+				37DA7AB02998D4E6000B5590 /* NaverImageDTO.swift in Sources */,
 				37DA7A7729936A08000B5590 /* BoxOfficeListView.swift in Sources */,
 				37DA79DF2990C69B000B5590 /* SceneDelegate.swift in Sources */,
 				37DA7A9D299767B5000B5590 /* MovieInfoModel.swift in Sources */,
+				37DA7AAC2997DFA1000B5590 /* MovieInfoView.swift in Sources */,
 				37DA7A7B29936E7D000B5590 /* ViewSettingProtocol.swift in Sources */,
 				37DA7A7929936BE4000B5590 /* BoxOfficeCollectionViewCell.swift in Sources */,
 				37DA7A9729952898000B5590 /* MovieInfoViewModel.swift in Sources */,
 				37DA7A532990EAF9000B5590 /* Date+Extension.swift in Sources */,
 				37DA7A7129936454000B5590 /* BoxOfficeRepository.swift in Sources */,
 				37DA7A602991CBBE000B5590 /* BoxOfficeEndPoint.swift in Sources */,
+				37DA7AAE2998CF75000B5590 /* NaverSearchEndPoint.swift in Sources */,
 				37DA7A99299528B7000B5590 /* MovieInfoViewController.swift in Sources */,
 				37DA7A952995285A000B5590 /* MovieInfoCoodinator.swift in Sources */,
 			);

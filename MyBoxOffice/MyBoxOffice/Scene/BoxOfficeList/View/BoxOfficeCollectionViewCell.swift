@@ -10,7 +10,6 @@ import UIKit
 final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     private let totalStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = 8
         
@@ -19,7 +18,6 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let leftVerticalStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         
         return stackView
@@ -27,7 +25,6 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let rightVerticalStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         
         return stackView
@@ -35,7 +32,6 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let rankStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         
         return stackView
@@ -43,7 +39,6 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let rankLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .title1)
         
         return label
@@ -51,7 +46,6 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let rankUpAndDownImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         
         return imageView
@@ -59,7 +53,6 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let rankOldAndNewLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .body)
         
         return label
@@ -67,7 +60,6 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .title2)
         
         return label
@@ -75,7 +67,6 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let audienceLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .body)
         
         return label
@@ -83,7 +74,6 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let accessoryImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "chevron.right")
         imageView.contentMode = .scaleAspectFit
         

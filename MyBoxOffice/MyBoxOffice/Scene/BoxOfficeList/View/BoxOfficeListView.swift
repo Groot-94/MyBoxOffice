@@ -12,7 +12,6 @@ final class BoxOfficeListView: UIView {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(BoxOfficeCollectionViewCell.self,
                                 forCellWithReuseIdentifier: "BoxOfficeCollectionViewCell")
         
@@ -35,10 +34,6 @@ final class BoxOfficeListView: UIView {
 }
 
 extension BoxOfficeListView: ViewSettingProtocol {
-    func configureView() {
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-    
     func configureSubViews() {
         addSubview(collectionView)
     }

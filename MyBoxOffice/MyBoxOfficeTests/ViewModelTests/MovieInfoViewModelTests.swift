@@ -37,7 +37,7 @@ final class MovieInfoViewModelTests: XCTestCase {
             }.disposed(by: disposeBag)
         
         //when
-        sut.input.viewDidLoad()
+        sut.input.viewWillAppear()
         let result = "더 퍼스트 슬램덩크"
         
         //then

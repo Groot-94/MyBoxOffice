@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NaverSerchSecret</key>
+	<string>mhk6D5c0Ar</string>
+	<key>NaverSearchID</key>
+	<string>00qQfDvtXIZ083fzNAfi</string>
 	<key>BoxOfficeAPIPrivateKey</key>
 	<string>5105d669cff639c6c150350672cc9671</string>
 	<key>UIApplicationSceneManifest</key>

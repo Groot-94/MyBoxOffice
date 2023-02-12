@@ -37,7 +37,7 @@ final class BoxOfficeListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.input.viewWillAppear()
-        showLodingView()
+        startLodingView(hideView: listView)
     }
     
     private func bind() {
@@ -52,7 +52,9 @@ final class BoxOfficeListViewController: UIViewController {
         
         viewModel.output.viewWillApperLoading
             .subscribe { [weak self] _ in
-                self?.hideLodingView()
+                guard let self = self else { return }
+                
+                self.endLodingView(showView: self.listView)
             }.disposed(by: disposeBag)
         
         viewModel.output.refreshListLoading

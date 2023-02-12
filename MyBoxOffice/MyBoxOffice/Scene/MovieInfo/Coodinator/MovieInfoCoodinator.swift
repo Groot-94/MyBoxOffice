@@ -31,8 +31,4 @@ final class MovieInfoCoodinator: Coordinator {
         movieInfoViewController.coodinator = self
         navigationController.pushViewController(movieInfoViewController, animated: true)
     }
-    
-    deinit {
-        print("쿠디네이터 제거")
-    }
 }

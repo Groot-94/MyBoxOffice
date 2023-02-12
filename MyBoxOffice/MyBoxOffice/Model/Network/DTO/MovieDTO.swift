@@ -16,35 +16,35 @@ struct MovieInfoResultDTO: Decodable {
 
 struct MovieInfoDTO: Decodable {
     let movieCd: String
-        let movieNm: String
-        let movieNmEn: String
-        let movieNmOg: String
-        let showTm: String
-        let prdtYear: String
-        let openDt: String
-        let prdtStatNm: String
-        let typeNm: String
-        let nations: [NationDTO]
-        let genres: [GenreDTO]
-        let directors: [DirectorDTO]
-        let actors: [ActorDTO]
-        let showTypes: [ShowTypeDTO]
-        let companys: [CompanyDTO]
-        let audits: [AuditDTO]
+    let movieNm: String
+    let movieNmEn: String
+    let movieNmOg: String
+    let showTm: String
+    let prdtYear: String
+    let openDt: String
+    let prdtStatNm: String
+    let typeNm: String
+    let nations: [NationDTO]
+    let genres: [GenreDTO]
+    let directors: [DirectorDTO]
+    let actors: [ActorDTO]
+    let showTypes: [ShowTypeDTO]
+    let companys: [CompanyDTO]
+    let audits: [AuditDTO]
 }
 
 extension MovieInfoDTO {
     func toDomain() -> MovieInfoModel {
         MovieInfoModel(movieCode: self.movieCd,
-                         movieName: self.movieNm,
-                         showTime: self.showTm,
-                         productYear: self.prdtYear,
-                         openDate: self.openDt,
-                         typeName: self.typeNm,
-                         nations: self.nations.map { $0.toDomain() },
-                         genresName: self.genres.map { $0.toDomain() },
-                         directors: self.directors.map { $0.toDomain() },
-                         actors: self.actors.map { $0.toDomain() })
+                       movieName: self.movieNm,
+                       showTime: self.showTm,
+                       productYear: self.prdtYear,
+                       openDate: self.openDt,
+                       nations: self.nations.map { $0.toDomain() },
+                       genres: self.genres.map { $0.toDomain() },
+                       directors: self.directors.map { $0.toDomain() },
+                       audits: self.audits.map { $0.toDomain() },
+                       actors: self.actors.map { $0.toDomain() })
     }
 }
 
@@ -74,7 +74,7 @@ struct DirectorDTO: Decodable {
 
 extension DirectorDTO {
     func toDomain() -> DirectorModel {
-        DirectorModel(peopleNm: self.peopleNm)
+        DirectorModel(peopleName: self.peopleNm)
     }
 }
 
@@ -84,13 +84,20 @@ struct ActorDTO: Decodable {
 
 extension ActorDTO {
     func toDomain() -> ActorModel {
-        ActorModel(peopleNm: self.peopleNm)
+        ActorModel(peopleName: self.peopleNm)
     }
 }
 
 struct AuditDTO: Decodable {
     let watchGradeNm: String
 }
+
+extension AuditDTO {
+    func toDomain() -> AuditModel {
+        AuditModel(watchGradeName: self.watchGradeNm)
+    }
+}
+
 
 struct ShowTypeDTO: Decodable {
     let showTypeGroupNm: String
