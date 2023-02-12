@@ -11,9 +11,9 @@ import RxSwift
 
 struct NetworkManager {
     private let session: Session
-        
+    
     init(session: Session = Session.default) {
-            self.session = session
+        self.session = session
     }
     
     func requestGetAPI(url: String, parameters: Parameters? = nil, headers: HTTPHeaders? = nil) -> Observable<Data> {

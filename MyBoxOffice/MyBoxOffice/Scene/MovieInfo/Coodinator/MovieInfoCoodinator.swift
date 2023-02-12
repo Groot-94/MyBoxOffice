@@ -27,7 +27,7 @@ final class MovieInfoCoodinator: Coordinator {
         guard let viewModel = viewModel else { return }
         
         let movieInfoViewController = MovieInfoViewController(coodinator: self,
-                                                                    viewModel: viewModel)
+                                                              viewModel: viewModel)
         movieInfoViewController.coodinator = self
         navigationController.pushViewController(movieInfoViewController, animated: true)
     }

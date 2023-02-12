@@ -39,12 +39,12 @@ struct DailyBoxOfficeDTO: Decodable{
 extension DailyBoxOfficeDTO {
     func toDomain() -> BoxOfficeModel {
         BoxOfficeModel(rank: self.rank,
-                            rankIncrement: self.rankInten,
-                            rankOldAndNew: self.rankOldAndNew,
-                            movieCode: self.movieCd,
-                            movieName: self.movieNm,
-                            audienceCount: self.audiCnt,
-                            audienceAccumulate: self.audiAcc)
+                       rankIncrement: self.rankInten,
+                       rankOldAndNew: self.rankOldAndNew,
+                       movieCode: self.movieCd,
+                       movieName: self.movieNm,
+                       audienceCount: self.audiCnt,
+                       audienceAccumulate: self.audiAcc)
     }
 }
 

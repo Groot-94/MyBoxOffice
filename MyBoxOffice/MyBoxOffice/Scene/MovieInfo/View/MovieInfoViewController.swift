@@ -56,7 +56,7 @@ final class MovieInfoViewController: UIViewController {
         viewModel.output.postMoviePoster
             .subscribe (onNext: { [weak self] Data in
                 guard let image = UIImage(data: Data),
-                let self = self else { return }
+                      let self = self else { return }
                 
                 DispatchQueue.main.async {
                     self.movieInfoView.configureImage(image: image)

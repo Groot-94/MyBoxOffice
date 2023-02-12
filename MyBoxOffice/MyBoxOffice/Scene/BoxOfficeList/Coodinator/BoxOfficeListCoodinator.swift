@@ -31,8 +31,8 @@ final class BoxOfficeListCoodinator: Coordinator {
 extension BoxOfficeListCoodinator {
     func showMovieInfo(movieCode: String) {
         let movieInfoCoodinator = MovieInfoCoodinator(parentCoordinator: self,
-                                                          navigationController: navigationController,
-                                                          viewModel: MovieInfoViewModel(movieCode: movieCode))
+                                                      navigationController: navigationController,
+                                                      viewModel: MovieInfoViewModel(movieCode: movieCode))
         childCoordinators.append(movieInfoCoodinator)
         childCoordinators.first?.start()
     }
