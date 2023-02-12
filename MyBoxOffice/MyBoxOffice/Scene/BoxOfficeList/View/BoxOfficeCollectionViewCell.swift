@@ -95,7 +95,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
         rankOldAndNewLabel.text = convertRankOldAndNewLabel(dailyBoxOfficeModel.rankOldAndNew,
                                                             dailyBoxOfficeModel.rankIncrement)
         titleLabel.text = dailyBoxOfficeModel.movieName
-        audienceLabel.text = "오늘 \(dailyBoxOfficeModel.audienceCount) / 총 \(dailyBoxOfficeModel.audienceAccumulate)"
+        audienceLabel.text = "오늘 \(dailyBoxOfficeModel.audienceCount.convertToDecimal) / 총 \(dailyBoxOfficeModel.audienceAccumulate.convertToDecimal)"
     }
     
     private func convertRankOldAndNewLabel(_ rankOldAndNew: RankOldAndNew, _ rankIncrement: String) -> String {

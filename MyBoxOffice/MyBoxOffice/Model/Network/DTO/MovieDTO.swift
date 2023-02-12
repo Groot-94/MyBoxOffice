@@ -98,7 +98,6 @@ extension AuditDTO {
     }
 }
 
-
 struct ShowTypeDTO: Decodable {
     let showTypeGroupNm: String
     let showTypeNm: String

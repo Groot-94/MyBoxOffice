@@ -214,7 +214,7 @@ final class MovieInfoView: UIView {
         directorsValueLabel.text = movieInfoModel.directorsNames
         productYearValueLabel.text = movieInfoModel.productYear
         showTimeValueLabel.text = movieInfoModel.showTime + "분"
-        openDateValueLabel.text = movieInfoModel.openDate
+        openDateValueLabel.text = movieInfoModel.openDate.convertDateFormat
         watchGradeValueLabel.text = movieInfoModel.watchGradeNames
         nationsValueLabel.text = movieInfoModel.nationsNames
         genresNameValueLabel.text = movieInfoModel.genresNames

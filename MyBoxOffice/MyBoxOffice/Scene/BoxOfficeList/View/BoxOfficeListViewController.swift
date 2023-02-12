@@ -81,6 +81,9 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
     
     private func configureNavigationView() {
         navigationController?.navigationBar.topItem?.title = viewModel.targetDate.toString(form: "yyyy-MM-dd")
+        let backBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     private func configureRefreshControl() {
