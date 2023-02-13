@@ -10,12 +10,12 @@ import RxSwift
 import SnapKit
 
 final class DateSelectViewController: UIViewController {
-    weak var coodinator: DateSelectCoodinator?
+    weak var coodinator: Coordinator?
     private let disposeBag = DisposeBag()
     private var viewModel: DateSelectViewModelable
     private let calendarView = UICalendarView()
     
-    init(coodinator: DateSelectCoodinator? = nil, viewModel: DateSelectViewModelable) {
+    init(coodinator: Coordinator? = nil, viewModel: DateSelectViewModelable) {
         self.coodinator = coodinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

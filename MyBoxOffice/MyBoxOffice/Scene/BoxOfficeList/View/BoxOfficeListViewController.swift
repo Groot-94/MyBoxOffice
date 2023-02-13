@@ -87,10 +87,18 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
     private func configureNavigationView() {
         let dateSelectBarButton = UIBarButtonItem(title: "날짜선택", image: nil, target: self, action: #selector(didTapDateSelectButton))
         dateSelectBarButton.tintColor = .black
+        let serchBarButton = UIBarButtonItem(title: "검색", image: nil, target: self, action: #selector(didTapserchBarButton))
+        serchBarButton.tintColor = .black
         let backBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
+        navigationItem.leftBarButtonItem = serchBarButton
         navigationItem.rightBarButtonItem = dateSelectBarButton
         navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    @objc
+    private func didTapserchBarButton() {
+        coodinator?.showSearchMovie()
     }
     
     @objc

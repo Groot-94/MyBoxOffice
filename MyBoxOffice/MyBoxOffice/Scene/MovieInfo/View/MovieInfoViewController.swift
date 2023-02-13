@@ -10,7 +10,7 @@ import RxSwift
 import SnapKit
 
 final class MovieInfoViewController: UIViewController {
-    weak var coodinator: MovieInfoCoodinator?
+    weak var coodinator: Coordinator?
     private let viewModel: MovieInfoViewModelable
     private let disposeBag = DisposeBag()
     private let movieInfoView = MovieInfoView()
@@ -18,7 +18,7 @@ final class MovieInfoViewController: UIViewController {
     let backgroundView = UIView()
     let activityIndicatorView = UIActivityIndicatorView(style: .large)
     
-    init(coodinator: MovieInfoCoodinator? = nil, viewModel: MovieInfoViewModelable) {
+    init(coodinator: Coordinator? = nil, viewModel: MovieInfoViewModelable) {
         self.coodinator = coodinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

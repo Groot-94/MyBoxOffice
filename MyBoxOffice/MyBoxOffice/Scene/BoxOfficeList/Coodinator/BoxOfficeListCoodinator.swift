@@ -49,5 +49,13 @@ extension BoxOfficeListCoodinator {
         childCoordinators.append(dateSelectCoodinator)
         dateSelectCoodinator.start()
     }
+    
+    func showSearchMovie() {
+        let searchMovieCoodinator = SearchMovieCoodinator(parentCoordinator: self,
+                                                          navigationController: navigationController,
+                                                          viewModel: SearchMovieViewModel())
+        childCoordinators.append(searchMovieCoodinator)
+        searchMovieCoodinator.start()
+    }
 }
 
