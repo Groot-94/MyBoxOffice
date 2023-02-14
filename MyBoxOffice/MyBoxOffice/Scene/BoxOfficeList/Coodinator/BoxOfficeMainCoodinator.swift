@@ -52,7 +52,7 @@ extension BoxOfficeListCoodinator {
     
     func showSearchMovie() {
         let searchMovieCoodinator = SearchMovieCoodinator(parentCoordinator: self,
-                                                          navigationController: navigationController,
+            navigationController: navigationController,
                                                           viewModel: SearchMovieViewModel())
         childCoordinators.append(searchMovieCoodinator)
         searchMovieCoodinator.start()

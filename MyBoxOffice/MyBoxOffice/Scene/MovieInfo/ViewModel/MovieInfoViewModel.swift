@@ -32,7 +32,7 @@ struct MovieInfoViewModel: MovieInfoViewModelable {
     var output: MovieInfoViewModelOutput { self }
 }
 
-extension MovieInfoViewModel: MovieInfoRepository {
+extension MovieInfoViewModel: BoxOfficeRepository, NaverRepository {
     private func fetchData() {
         let endPoint = BoxOfficeEndPoint.movieInfo(MovieParameters(movieCd: movieCode))
         readMovieInfo(endPoint: endPoint)
@@ -43,7 +43,7 @@ extension MovieInfoViewModel: MovieInfoRepository {
     }
     
     private func fetchPosterImage(moiveName: String) {
-        readPosterImage(moiveName: moiveName)
+        requestMoviePosterImage(moiveName: moiveName)
             .subscribe(onNext: { data in
                 moviePoster.onNext(data)
             }).disposed(by: disposeBag)

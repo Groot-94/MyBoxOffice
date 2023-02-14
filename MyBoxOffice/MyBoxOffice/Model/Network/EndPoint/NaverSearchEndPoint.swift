@@ -10,6 +10,7 @@ import Alamofire
 
 enum NaverSearchEndPoint {
     case posterImage(NaverImageParameters)
+    case movieInfo(NaverMovieParameters)
     
     private var baseURL: String {
         return "https://openapi.naver.com/v1/search/"
@@ -19,6 +20,8 @@ enum NaverSearchEndPoint {
         switch self {
         case .posterImage:
             return "image"
+        case .movieInfo:
+            return "movie.json"
         }
     }
     
@@ -30,6 +33,8 @@ enum NaverSearchEndPoint {
         switch self {
         case .posterImage(let naverImageParameters):
             return naverImageParameters.parameters
+        case .movieInfo(let naverMovieParameters):
+            return naverMovieParameters.parameters
         }
     }
     
@@ -65,6 +70,44 @@ struct NaverImageParameters {
             "start": start ?? "1",
             "sort": sort ?? "sim",
             "filter": filter ?? "all"
+        ]
+    }
+}
+
+struct NaverMovieParameters {
+    private let searchText: String
+    private let display: String?
+    private var start: String?
+    private var genre: String?
+    private var country: String?
+    private var yearFrom: Int?
+    private var yearTo: Int?
+    
+    init(searchText: String,
+         display: String? = nil,
+         start: String? = nil,
+         genre: String? = nil,
+         country: String? = nil,
+         yearFrom: Int? = nil,
+         yearTo: Int? = nil) {
+        self.searchText = searchText
+        self.display = display
+        self.start = start
+        self.genre = genre
+        self.country = country
+        self.yearFrom = yearFrom
+        self.yearTo = yearTo
+    }
+    
+    var parameters: [String: Any] {
+        [
+            "query": searchText,
+            "display": display ?? "10",
+            "start": start ?? "1",
+            "genre": genre ?? "",
+            "country": country ?? "",
+            "yearfrom": yearFrom ?? 1900,
+            "yearto": yearTo ?? 2023
         ]
     }
 }

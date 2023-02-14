@@ -11,6 +11,7 @@ import Alamofire
 enum BoxOfficeEndPoint {
     case dailyBoxOfficeList(BoxOfficeListParameters)
     case movieInfo(MovieParameters)
+    case movieList(MovieListParameters)
     
     private var baseURL: String {
         return "https://www.kobis.or.kr/kobisopenapi/webservice/rest/"
@@ -22,6 +23,8 @@ enum BoxOfficeEndPoint {
             return "boxoffice/searchDailyBoxOfficeList.json"
         case .movieInfo:
             return "movie/searchMovieInfo.json"
+        case .movieList:
+            return "movie/searchMovieList.json"
         }
     }
     
@@ -35,11 +38,13 @@ enum BoxOfficeEndPoint {
             return boxOfficeListParameters.parameters
         case .movieInfo(let movieParameters):
             return movieParameters.parameters
+        case .movieList(let movieListParameters):
+            return movieListParameters.parameters
         }
     }
 }
 
-struct BoxOfficeListParameters: Encodable {
+struct BoxOfficeListParameters {
     private let key: String
     private let targetDate: String
     private var itemPerPage: String?
@@ -72,7 +77,7 @@ struct BoxOfficeListParameters: Encodable {
         ]
     }
     
-    enum MultiMovieYn: Encodable {
+    enum MultiMovieYn {
         case yes
         case no
         
@@ -86,7 +91,7 @@ struct BoxOfficeListParameters: Encodable {
         }
     }
     
-    enum RepNationCd: Encodable {
+    enum RepNationCd {
         case korea
         case foreign
         
@@ -101,7 +106,7 @@ struct BoxOfficeListParameters: Encodable {
     }
 }
 
-struct MovieParameters: Encodable {
+struct MovieParameters {
     private let key: String
     private let movieCd: String
     
@@ -114,6 +119,23 @@ struct MovieParameters: Encodable {
         [
             "key": key,
             "movieCd": movieCd
+        ]
+    }
+}
+
+struct MovieListParameters {
+    private let key: String
+    private let movieNm: String
+    
+    init(key: String = BoxOfficePrivateKey.value, movieNm: String) {
+        self.key = key
+        self.movieNm = movieNm
+    }
+    
+    var parameters: [String: String] {
+        [
+            "key": key,
+            "movieNm": movieNm
         ]
     }
 }

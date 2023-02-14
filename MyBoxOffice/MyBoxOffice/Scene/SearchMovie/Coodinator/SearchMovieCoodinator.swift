@@ -27,6 +27,16 @@ final class SearchMovieCoodinator: Coordinator {
         let searchMovieViewController = SearchMovieViewController(coodinator: self,
                                                                   viewModel: viewModel)
         searchMovieViewController.coodinator = self
-        navigationController.present(searchMovieViewController, animated: true)
+        navigationController.pushViewController(searchMovieViewController, animated: true)
+    }
+}
+
+extension SearchMovieCoodinator {
+    func showMovieInfo(movieCode: String) {
+        let movieInfoCoodinator = MovieInfoCoodinator(parentCoordinator: self,
+                                                      navigationController: navigationController,
+                                                      viewModel: MovieInfoViewModel(movieCode: movieCode))
+        childCoordinators.append(movieInfoCoodinator)
+        movieInfoCoodinator.start()
     }
 }
