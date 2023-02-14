@@ -48,21 +48,18 @@ final class MovieInfoViewController: UIViewController {
     private func bind() {
         viewModel.output.postMovieInfo
             .subscribe (onNext: { [weak self] model in
-                DispatchQueue.main.async {
-                    self?.movieInfoView.configureItems(movieInfoModel: model)
-                    self?.configureNavigationTitle(model.movieName)
-                }
+                guard let self = self else { return }
+                
+                self.movieInfoView.configureItems(movieInfoModel: model)
+                self.configureNavigationTitle(model.movieName)
+                self.endLodingView(showView: self.movieInfoView)
             }).disposed(by: disposeBag)
         
         viewModel.output.postMoviePoster
             .subscribe (onNext: { [weak self] Data in
-                guard let image = UIImage(data: Data),
-                      let self = self else { return }
+                guard let image = UIImage(data: Data) else { return }
                 
-                DispatchQueue.main.async {
-                    self.movieInfoView.configureImage(image: image)
-                    self.endLodingView(showView: self.movieInfoView)
-                }
+                self?.movieInfoView.configureImage(image: image)
             }).disposed(by: disposeBag)
     }
     

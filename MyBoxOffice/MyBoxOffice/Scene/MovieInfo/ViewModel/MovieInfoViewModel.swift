@@ -59,9 +59,11 @@ extension MovieInfoViewModel: MovieInfoViewModelInput {
 extension MovieInfoViewModel: MovieInfoViewModelOutput {
     var postMovieInfo: Observable<MovieInfoModel> {
         movieInfo.asObserver()
+            .observe(on: MainScheduler.instance)
     }
     
     var postMoviePoster: Observable<Data> {
         moviePoster.asObservable()
+            .observe(on: MainScheduler.instance)
     }
 }

@@ -63,14 +63,17 @@ extension BoxOfficeListViewModel: BoxOfficeListViewModelInput {
 extension BoxOfficeListViewModel: BoxOfficeListViewModelOutput {
     var fetchedData: Observable<[BoxOfficeModel]> {
         dailyBoxOffices.asObservable()
+            .observe(on: MainScheduler.instance)
     }
     
     var viewWillApperLoading: Observable<Void> {
         postEndLoding.asObservable()
+            .observe(on: MainScheduler.instance)
     }
     
     var refreshListLoading: Observable<Bool> {
         postEndRefreshLoading.asObservable()
+            .observe(on: MainScheduler.instance)
     }
 }
 

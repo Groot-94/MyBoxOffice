@@ -27,4 +27,8 @@ extension String {
         
         return numberFormatter.string(from: number as NSNumber) ?? self
     }
+    
+    var convertBlank: String {
+        self == "" ? "-" : self
+    }
 }

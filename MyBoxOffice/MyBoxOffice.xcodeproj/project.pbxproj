@@ -111,8 +111,8 @@
 		37DA7AB729990580000B5590 /* DateSelectCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectCoodinator.swift; sourceTree = "<group>"; };
 		37DA7AB9299905D7000B5590 /* DateSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectViewController.swift; sourceTree = "<group>"; };
 		37DA7ABB29990645000B5590 /* DateSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectViewModel.swift; sourceTree = "<group>"; };
-		37DA7AE8299A1007000B5590 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBoxOffice.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		37DA7AE9299A1007000B5590 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBoxOfficeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		37DA7AE8299A1007000B5590 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MyBoxOffice.app; path = "/Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug-iphoneos/MyBoxOffice.app"; sourceTree = "<absolute>"; };
+		37DA7AE9299A1007000B5590 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyBoxOfficeTests.xctest; path = /Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug/MyBoxOfficeTests.xctest; sourceTree = "<absolute>"; };
 		37DA7AEE299A12B3000B5590 /* SearchMovieCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieCoodinator.swift; sourceTree = "<group>"; };
 		37DA7AF0299A12BD000B5590 /* SearchMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModel.swift; sourceTree = "<group>"; };
 		37DA7AF2299A12C9000B5590 /* SearchMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewController.swift; sourceTree = "<group>"; };
@@ -152,8 +152,6 @@
 			children = (
 				37DA79DB2990C69A000B5590 /* MyBoxOffice */,
 				37DA7A432990E04B000B5590 /* MyBoxOfficeTests */,
-				37DA7AE8299A1007000B5590 /* MyBoxOffice.app */,
-				37DA7AE9299A1007000B5590 /* MyBoxOfficeTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};

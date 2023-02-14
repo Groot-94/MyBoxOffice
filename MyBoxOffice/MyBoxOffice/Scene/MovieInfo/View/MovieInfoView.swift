@@ -52,7 +52,7 @@ final class MovieInfoView: UIView {
     private let posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "photo")
+        imageView.image = UIImage(named: "placeholder")
         
         return imageView
     }()
@@ -70,7 +70,6 @@ final class MovieInfoView: UIView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.text = ""
         
         return label
     }()
@@ -88,7 +87,7 @@ final class MovieInfoView: UIView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.text = ""
+        label.text = " "
         
         return label
     }()
@@ -106,7 +105,6 @@ final class MovieInfoView: UIView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.text = ""
         
         return label
     }()
@@ -124,7 +122,6 @@ final class MovieInfoView: UIView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.text = ""
         
         return label
     }()
@@ -142,7 +139,6 @@ final class MovieInfoView: UIView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.text = ""
         
         return label
     }()
@@ -160,7 +156,6 @@ final class MovieInfoView: UIView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.text = ""
         
         return label
     }()
@@ -178,7 +173,6 @@ final class MovieInfoView: UIView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
         label.setContentHuggingPriority(.required, for: .vertical)
-        label.text = ""
         
         return label
     }()
@@ -195,7 +189,6 @@ final class MovieInfoView: UIView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
         label.numberOfLines = 0
-        label.text = ""
         
         return label
     }()
@@ -211,14 +204,14 @@ final class MovieInfoView: UIView {
     }
     
     func configureItems(movieInfoModel: MovieInfoModel) {
-        directorsValueLabel.text = movieInfoModel.directorsNames
-        productYearValueLabel.text = movieInfoModel.productYear
+        directorsValueLabel.text = movieInfoModel.directorsNames.convertBlank
+        productYearValueLabel.text = movieInfoModel.productYear.convertBlank
         showTimeValueLabel.text = movieInfoModel.showTime + "분"
-        openDateValueLabel.text = movieInfoModel.openDate.convertDateFormat
-        watchGradeValueLabel.text = movieInfoModel.watchGradeNames
-        nationsValueLabel.text = movieInfoModel.nationsNames
-        genresNameValueLabel.text = movieInfoModel.genresNames
-        actorsValueLabel.text = movieInfoModel.actorsNames
+        openDateValueLabel.text = movieInfoModel.openDate.convertDateFormat.convertBlank
+        watchGradeValueLabel.text = movieInfoModel.watchGradeNames.convertBlank
+        nationsValueLabel.text = movieInfoModel.nationsNames.convertBlank
+        genresNameValueLabel.text = movieInfoModel.genresNames.convertBlank
+        actorsValueLabel.text = movieInfoModel.actorsNames.convertBlank
     }
     
     func configureImage(image: UIImage) {
