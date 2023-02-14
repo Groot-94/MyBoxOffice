@@ -16,6 +16,7 @@ final class SearchMovieViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let searchController = UISearchController()
     private let listView = UITableView()
+    private var isSelectedCell = false
     
     init(coodinator: SearchMovieCoodinator? = nil, viewModel: SearchMovieViewModelable) {
         self.coodinator = coodinator
@@ -49,11 +50,16 @@ final class SearchMovieViewController: UIViewController {
         viewModel.output.postMovieCodeSearchResult
             .subscribe { [weak self] movieCode in
                 self?.coodinator?.showMovieInfo(movieCode: movieCode)
+                self?.isSelectedCell = false
             }.disposed(by: disposeBag)
         
         listView.rx.modelSelected(NaverMovieModel.self)
             .subscribe(onNext: { [weak self] model in
-                self?.viewModel.input.didTapCell(model: model)
+                guard let self = self,
+                self.isSelectedCell == false else { return }
+                
+                self.viewModel.input.didTapCell(model: model)
+                self.isSelectedCell = true
             })
             .disposed(by: disposeBag)
         
