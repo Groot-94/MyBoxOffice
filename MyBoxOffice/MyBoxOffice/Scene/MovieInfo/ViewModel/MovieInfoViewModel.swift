@@ -20,13 +20,13 @@ protocol MovieInfoViewModelInput {
 
 protocol MovieInfoViewModelOutput {
     var postMovieInfo: Observable<MovieInfoModel> { get }
-    var postMoviePoster: Observable<Data> { get }
+    var postMoviePoster: Observable<String> { get }
 }
 
 struct MovieInfoViewModel: MovieInfoViewModelable {
     private let disposeBag = DisposeBag()
     private let movieInfo = PublishSubject<MovieInfoModel>()
-    private let moviePoster = PublishSubject<Data>()
+    private let moviePoster = PublishSubject<String>()
     let movieCode: String
     var input: MovieInfoViewModelInput { self }
     var output: MovieInfoViewModelOutput { self }
@@ -43,9 +43,9 @@ extension MovieInfoViewModel: BoxOfficeRepository, NaverRepository {
     }
     
     private func fetchPosterImage(moiveName: String) {
-        requestMoviePosterImage(moiveName: moiveName)
-            .subscribe(onNext: { data in
-                moviePoster.onNext(data)
+        readMoviePosterImage(moiveName: moiveName)
+            .subscribe(onNext: { url in
+                moviePoster.onNext(url)
             }).disposed(by: disposeBag)
     }
 }
@@ -62,7 +62,7 @@ extension MovieInfoViewModel: MovieInfoViewModelOutput {
             .observe(on: MainScheduler.instance)
     }
     
-    var postMoviePoster: Observable<Data> {
+    var postMoviePoster: Observable<String> {
         moviePoster.asObservable()
             .observe(on: MainScheduler.instance)
     }

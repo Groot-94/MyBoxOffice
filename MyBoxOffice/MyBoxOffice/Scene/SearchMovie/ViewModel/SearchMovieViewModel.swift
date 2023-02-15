@@ -34,7 +34,7 @@ struct SearchMovieViewModel: SearchMovieViewModelable {
 
 extension SearchMovieViewModel: NaverRepository {
     private func searchData(name: String) {
-        requestMovieInfo(moiveName: name)
+        readMovieInfo(moiveName: name)
             .subscribe { movies in
                 movieSearchResult.accept(movies)
             }.disposed(by: disposeBag)

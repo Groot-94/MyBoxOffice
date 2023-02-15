@@ -72,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		373696E6299CCC6100FE2188 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MyBoxOffice.app; path = "/Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug-iphoneos/MyBoxOffice.app"; sourceTree = "<absolute>"; };
+		373696E7299CCC6100FE2188 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyBoxOfficeTests.xctest; path = /Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug/MyBoxOfficeTests.xctest; sourceTree = "<absolute>"; };
 		37DA79DC2990C69B000B5590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37DA79DE2990C69B000B5590 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		37DA79E02990C69B000B5590 /* BoxOfficeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeListViewController.swift; sourceTree = "<group>"; };
@@ -111,8 +113,6 @@
 		37DA7AB729990580000B5590 /* DateSelectCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectCoodinator.swift; sourceTree = "<group>"; };
 		37DA7AB9299905D7000B5590 /* DateSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectViewController.swift; sourceTree = "<group>"; };
 		37DA7ABB29990645000B5590 /* DateSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectViewModel.swift; sourceTree = "<group>"; };
-		37DA7AE8299A1007000B5590 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MyBoxOffice.app; path = "/Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug-iphoneos/MyBoxOffice.app"; sourceTree = "<absolute>"; };
-		37DA7AE9299A1007000B5590 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyBoxOfficeTests.xctest; path = /Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug/MyBoxOfficeTests.xctest; sourceTree = "<absolute>"; };
 		37DA7AEE299A12B3000B5590 /* SearchMovieCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieCoodinator.swift; sourceTree = "<group>"; };
 		37DA7AF0299A12BD000B5590 /* SearchMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModel.swift; sourceTree = "<group>"; };
 		37DA7AF2299A12C9000B5590 /* SearchMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewController.swift; sourceTree = "<group>"; };
@@ -325,8 +325,8 @@
 		37DA7A72299366C1000B5590 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				37DA7A0C2990D2D9000B5590 /* NetworkManager.swift */,
 				37DA7AFD299A9717000B5590 /* ImageCacheManager.swift */,
+				37DA7A0C2990D2D9000B5590 /* NetworkManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				37DA7A74299369D2000B5590 /* SnapKit */,
 			);
 			productName = MyBoxOffice;
-			productReference = 37DA7AE8299A1007000B5590 /* MyBoxOffice.app */;
+			productReference = 373696E6299CCC6100FE2188 /* MyBoxOffice.app */;
 			productType = "com.apple.product-type.application";
 		};
 		37DA7A412990E04B000B5590 /* MyBoxOfficeTests */ = {
@@ -525,7 +525,7 @@
 				37DA7AA92997736A000B5590 /* RxCocoa */,
 			);
 			productName = MyBoxOfficeTests;
-			productReference = 37DA7AE9299A1007000B5590 /* MyBoxOfficeTests.xctest */;
+			productReference = 373696E7299CCC6100FE2188 /* MyBoxOfficeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */

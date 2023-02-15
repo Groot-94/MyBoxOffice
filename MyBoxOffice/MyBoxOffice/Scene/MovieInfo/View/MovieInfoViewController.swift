@@ -56,9 +56,10 @@ final class MovieInfoViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         viewModel.output.postMoviePoster
-            .subscribe (onNext: { [weak self] Data in
-                guard let image = UIImage(data: Data) else { return }
-                
+            .flatMap { url -> Observable<UIImage> in
+                ImageCacheManager.default.requestImage(url: url)
+            }
+            .subscribe (onNext: { [weak self] image in
                 self?.movieInfoView.configureImage(image: image)
             }).disposed(by: disposeBag)
     }

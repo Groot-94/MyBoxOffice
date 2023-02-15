@@ -38,10 +38,7 @@ final class BoxOfficeListViewModel: BoxOfficeViewModelable {
 
 extension BoxOfficeListViewModel: BoxOfficeRepository {
     private func fetchData() {
-        let yesterdayDate = targetDate.yesterday
-        let endPoint = BoxOfficeEndPoint.dailyBoxOfficeList(BoxOfficeListParameters(targetDate: yesterdayDate,
-                                                                                    itemPerPage: "10"))
-        readDailyBoxOffice(endPoint: endPoint)
+        readDailyBoxOffice(date: targetDate, itemPerPage: "30")
             .subscribe { [weak self] list in
                 self?.dailyBoxOffices.accept(list)
                 self?.postEndLoding.onNext(())
