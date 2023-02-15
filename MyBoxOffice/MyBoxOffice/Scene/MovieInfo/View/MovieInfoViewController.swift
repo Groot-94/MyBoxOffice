@@ -47,6 +47,7 @@ final class MovieInfoViewController: UIViewController {
     
     private func bind() {
         viewModel.output.postMovieInfo
+            .observe(on: MainScheduler.instance)
             .subscribe (onNext: { [weak self] model in
                 guard let self = self else { return }
                 

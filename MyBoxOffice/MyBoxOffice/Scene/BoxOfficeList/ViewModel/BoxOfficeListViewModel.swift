@@ -12,7 +12,7 @@ import RxRelay
 protocol BoxOfficeViewModelable {
     var input: BoxOfficeListViewModelInput { get }
     var output: BoxOfficeListViewModelOutput { get }
-    var targetDate: Date { get }
+    var targetDate: Date { get set }
 }
 
 protocol BoxOfficeListViewModelInput {
@@ -22,15 +22,15 @@ protocol BoxOfficeListViewModelInput {
 
 protocol BoxOfficeListViewModelOutput {
     var fetchedData: Observable<[BoxOfficeModel]> { get }
-    var viewWillApperLoading: Observable<Void> { get }
-    var refreshListLoading: Observable<Bool> { get }
+    var hideLoadingView: Observable<Void> { get }
+    var hideRefresh: Observable<Bool> { get }
 }
 
 final class BoxOfficeListViewModel: BoxOfficeViewModelable {
     private let disposeBag = DisposeBag()
     private let dailyBoxOffices = BehaviorRelay<[BoxOfficeModel]>(value: [])
     private let postEndLoding = PublishSubject<Void>()
-    private let postEndRefreshLoading = PublishSubject<Bool>()
+    private let postEndRefresh = PublishSubject<Bool>()
     var targetDate = Date()
     var input: BoxOfficeListViewModelInput { self }
     var output: BoxOfficeListViewModelOutput { self }
@@ -38,11 +38,11 @@ final class BoxOfficeListViewModel: BoxOfficeViewModelable {
 
 extension BoxOfficeListViewModel: BoxOfficeRepository {
     private func fetchData() {
-        readDailyBoxOffice(date: targetDate, itemPerPage: "30")
+        readDailyBoxOffice(date: targetDate)
             .subscribe { [weak self] list in
                 self?.dailyBoxOffices.accept(list)
                 self?.postEndLoding.onNext(())
-                self?.postEndRefreshLoading.onNext(false)
+                self?.postEndRefresh.onNext(false)
             }.disposed(by: disposeBag)
     }
 }
@@ -60,17 +60,14 @@ extension BoxOfficeListViewModel: BoxOfficeListViewModelInput {
 extension BoxOfficeListViewModel: BoxOfficeListViewModelOutput {
     var fetchedData: Observable<[BoxOfficeModel]> {
         dailyBoxOffices.asObservable()
-            .observe(on: MainScheduler.instance)
     }
     
-    var viewWillApperLoading: Observable<Void> {
+    var hideLoadingView: Observable<Void> {
         postEndLoding.asObservable()
-            .observe(on: MainScheduler.instance)
     }
     
-    var refreshListLoading: Observable<Bool> {
-        postEndRefreshLoading.asObservable()
-            .observe(on: MainScheduler.instance)
+    var hideRefresh: Observable<Bool> {
+        postEndRefresh.asObservable()
     }
 }
 

@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-final class MovieTableViewCell: UITableViewCell {
+final class SearMovieResultTableViewCell: UITableViewCell {
     private let disposeBag = DisposeBag()
     private var imageUrl = ""
     
@@ -92,7 +92,7 @@ final class MovieTableViewCell: UITableViewCell {
     }
 }
 
-extension MovieTableViewCell: ViewSettingProtocol {
+extension SearMovieResultTableViewCell: ViewSettingProtocol {
     func configureSubViews() {
         contentView.addSubview(posterImageView)
         contentView.addSubview(verticalStackView)

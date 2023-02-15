@@ -50,7 +50,7 @@ final class BoxOfficeListViewController: UIViewController {
             cell.configureCellItems(dailyBoxOfficeModel: model)
         }.disposed(by: disposeBag)
         
-        viewModel.output.viewWillApperLoading
+        viewModel.output.hideLoadingView
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
                 
@@ -58,7 +58,7 @@ final class BoxOfficeListViewController: UIViewController {
                 self.endLodingView(showView: self.listView)
             }.disposed(by: disposeBag)
         
-        viewModel.output.refreshListLoading
+        viewModel.output.hideRefresh
             .skip(1)
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)

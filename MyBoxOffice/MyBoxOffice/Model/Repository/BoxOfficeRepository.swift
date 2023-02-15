@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol BoxOfficeRepository {
-    func readDailyBoxOffice(date: Date, itemPerPage: String) -> Observable<[BoxOfficeModel]>
+    func readDailyBoxOffice(date: Date, itemPerPage: String?) -> Observable<[BoxOfficeModel]>
     func readMovieInfo(endPoint: BoxOfficeEndPoint) -> Observable<MovieInfoModel>
     func readMovieCode(movieName: String) -> Observable<String>
 }
@@ -19,7 +19,7 @@ extension BoxOfficeRepository {
         NetworkManager()
     }
     
-    func readDailyBoxOffice(date: Date, itemPerPage: String) -> Observable<[BoxOfficeModel]> {
+    func readDailyBoxOffice(date: Date, itemPerPage: String? = nil) -> Observable<[BoxOfficeModel]> {
         let yesterdayDate = date.yesterday
         let endPoint = BoxOfficeEndPoint.dailyBoxOfficeList(BoxOfficeListParameters(targetDate: yesterdayDate,
                                                                                     itemPerPage: itemPerPage))

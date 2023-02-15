@@ -43,7 +43,7 @@ final class SearchMovieViewController: UIViewController {
         viewModel.output.postMovieSearchResult
             .skip(1)
             .bind(to: listView.rx.items(cellIdentifier: "MovieTableViewCell",
-                                        cellType: MovieTableViewCell.self)) { (row, model, cell) in
+                                        cellType: SearMovieResultTableViewCell.self)) { (row, model, cell) in
                 cell.configureItems(model)
             }.disposed(by: disposeBag)
         
@@ -95,7 +95,7 @@ extension SearchMovieViewController: ViewSettingProtocol {
     private func configureListView() {
         listView.showsVerticalScrollIndicator = false
         listView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        listView.register(MovieTableViewCell.self, forCellReuseIdentifier: "MovieTableViewCell")
+        listView.register(SearMovieResultTableViewCell.self, forCellReuseIdentifier: "MovieTableViewCell")
     }
     
     func configureLayouts() {
