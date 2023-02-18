@@ -73,18 +73,25 @@ final class SearchMovieViewController: UIViewController {
 extension SearchMovieViewController: ViewSettingProtocol {
     func configureView() {
         view.backgroundColor = .systemBackground
-        setupSearchController()
+        configureSearchController()
+        configureNavigationView()
     }
     
-    private func setupSearchController() {
+    private func configureSearchController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "영화명 검색"
-        searchController.searchBar.keyboardType = .webSearch
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.automaticallyShowsCancelButton = false
         navigationItem.searchController = searchController
+    }
+    
+    private func configureNavigationView() {
+        let backBarButtonItem = UIBarButtonItem(title: "뒤로", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
         navigationItem.title = "영화검색"
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     func configureSubViews() {
