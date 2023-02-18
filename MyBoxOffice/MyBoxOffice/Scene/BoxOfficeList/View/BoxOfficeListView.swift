@@ -9,6 +9,14 @@ import UIKit
 import SnapKit
 
 final class BoxOfficeListView: UIView {
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .title2).pointSize)
+        label.text = "일별 박스오피스"
+        
+        return label
+    }()
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -34,13 +42,23 @@ final class BoxOfficeListView: UIView {
 }
 
 extension BoxOfficeListView: ViewSettingProtocol {
+    func configureView() {
+        backgroundColor = .systemBackground
+    }
+    
     func configureSubViews() {
+        addSubview(titleLabel)
         addSubview(collectionView)
     }
     
     func configureLayouts() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.centerX.equalToSuperview()
+        }
         collectionView.snp.makeConstraints { make in
-            make.leading.top.trailing.bottom.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

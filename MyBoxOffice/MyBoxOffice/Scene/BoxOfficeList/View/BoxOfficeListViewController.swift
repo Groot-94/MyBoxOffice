@@ -54,7 +54,6 @@ final class BoxOfficeListViewController: UIViewController {
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
                 
-                self.configureNavigationTitle(self.viewModel.targetDate.toString(form: "yyyy-MM-dd"))
                 self.endLodingView(showView: self.listView)
             }.disposed(by: disposeBag)
         
@@ -62,6 +61,11 @@ final class BoxOfficeListViewController: UIViewController {
             .skip(1)
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
+        
+        viewModel.output.fetchedTargetDate
+            .subscribe { [weak self] date in
+                self?.configureNavigationTitle(date.toString(form: "yyyy-MM-dd"))
+            }.disposed(by: disposeBag)
         
         listView.listCollectionView.rx.modelSelected(BoxOfficeModel.self)
             .bind(onNext: { [weak self] model in
@@ -89,7 +93,7 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
         dateSelectBarButton.tintColor = .black
         let serchBarButton = UIBarButtonItem(title: "검색", image: nil, target: self, action: #selector(didTapserchBarButton))
         serchBarButton.tintColor = .black
-        let backBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: "뒤로", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         navigationItem.leftBarButtonItem = serchBarButton
         navigationItem.rightBarButtonItem = dateSelectBarButton
@@ -103,7 +107,7 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
     
     @objc
     private func didTapDateSelectButton() {
-        coodinator?.showDateSelect(currentDate: viewModel.targetDate)
+        coodinator?.showDateSelect(currentDate: viewModel.targetDate.value)
     }
     
     private func configureRefreshControl() {
@@ -125,7 +129,10 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
     func configureLayouts() {
         listView.listCollectionView.setCollectionViewLayout(createListLayout(), animated: true)
         listView.snp.makeConstraints { make in
-            make.leading.top.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.snp.bottom)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
         }
     }
     
@@ -133,7 +140,7 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
         let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                 heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: layoutSize)
-        item.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
+        item.contentInsets = .init(top: 8, leading: 16, bottom: 8, trailing: 16)
         let groupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                heightDimension: .fractionalHeight(0.15))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupsize, subitems: [item])

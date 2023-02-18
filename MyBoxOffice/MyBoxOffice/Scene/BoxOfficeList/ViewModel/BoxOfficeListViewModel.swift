@@ -12,7 +12,7 @@ import RxRelay
 protocol BoxOfficeViewModelable {
     var input: BoxOfficeListViewModelInput { get }
     var output: BoxOfficeListViewModelOutput { get }
-    var targetDate: Date { get set }
+    var targetDate: BehaviorRelay<Date> { get set }
 }
 
 protocol BoxOfficeListViewModelInput {
@@ -24,6 +24,7 @@ protocol BoxOfficeListViewModelOutput {
     var fetchedData: Observable<[BoxOfficeModel]> { get }
     var hideLoadingView: Observable<Void> { get }
     var hideRefresh: Observable<Bool> { get }
+    var fetchedTargetDate: Observable<Date> { get }
 }
 
 final class BoxOfficeListViewModel: BoxOfficeViewModelable {
@@ -31,14 +32,14 @@ final class BoxOfficeListViewModel: BoxOfficeViewModelable {
     private let dailyBoxOffices = BehaviorRelay<[BoxOfficeModel]>(value: [])
     private let postEndLoding = PublishSubject<Void>()
     private let postEndRefresh = PublishSubject<Bool>()
-    var targetDate = Date()
+    var targetDate = BehaviorRelay<Date>(value: Date())
     var input: BoxOfficeListViewModelInput { self }
     var output: BoxOfficeListViewModelOutput { self }
 }
 
 extension BoxOfficeListViewModel: BoxOfficeRepository {
     private func fetchData() {
-        readDailyBoxOffice(date: targetDate)
+        readDailyBoxOffice(date: targetDate.value)
             .subscribe { [weak self] list in
                 self?.dailyBoxOffices.accept(list)
                 self?.postEndLoding.onNext(())
@@ -69,11 +70,15 @@ extension BoxOfficeListViewModel: BoxOfficeListViewModelOutput {
     var hideRefresh: Observable<Bool> {
         postEndRefresh.asObservable()
     }
+    
+    var fetchedTargetDate: Observable<Date> {
+        targetDate.asObservable()
+    }
 }
 
 extension BoxOfficeListViewModel: DateSelectViewModelDelegate {
     func dateSelectViewModel(didTapedDate date: Date) {
-        targetDate = date
+        targetDate.accept(date)
         fetchData()
     }
 }

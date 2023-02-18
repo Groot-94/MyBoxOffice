@@ -30,7 +30,7 @@ final class BoxOfficeListViewModelTests: XCTestCase {
         let expectation = expectation(description: "비동기 처리")
         var movieName: String?
         //given
-        sut.targetDate = DateComponents(calendar: .current, year: 2023, month: 2, day: 5).date ?? Date()
+        sut.targetDate.accept(DateComponents(calendar: .current, year: 2023, month: 2, day: 5).date ?? Date())
         sut.output.fetchedData
             .skip(1)
             .subscribe { list in
@@ -86,5 +86,27 @@ final class BoxOfficeListViewModelTests: XCTestCase {
         //then
         waitForExpectations(timeout: 3)
         XCTAssertEqual(result, isHideRefresh)
+    }
+    
+    func test_output_fetchedTargetDate() {
+        let expectation = expectation(description: "비동기 처리")
+        var targetDate: Date?
+        
+        //given
+        sut.targetDate.accept(DateComponents(calendar: .current, year: 2023, month: 2, day: 5).date ?? Date())
+        sut.output.fetchedTargetDate
+            .subscribe(onNext: { date in
+                targetDate = date
+                expectation.fulfill()
+            })
+            .disposed(by: disposeBag)
+        
+        //when
+        sut.input.refreshList()
+        let result = DateComponents(calendar: .current, year: 2023, month: 2, day: 5).date ?? Date()
+        
+        //then
+        waitForExpectations(timeout: 3)
+        XCTAssertEqual(result, targetDate)
     }
 }

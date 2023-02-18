@@ -19,6 +19,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     private let leftVerticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
         
         return stackView
     }()
@@ -26,13 +27,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     private let rightVerticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        
-        return stackView
-    }()
-    
-    private let rankStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
         
         return stackView
     }()
@@ -40,27 +35,22 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     private let rankLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title1)
+        label.setContentHuggingPriority(.required, for: .vertical)
         
         return label
-    }()
-    
-    private let rankUpAndDownImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        
-        return imageView
     }()
     
     private let rankOldAndNewLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
+        label.setContentHuggingPriority(.defaultLow, for: .vertical)
         
         return label
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .title2)
+        label.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .title2).pointSize)
         
         return label
     }()
@@ -75,6 +65,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     private let accessoryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.right")
+        imageView.tintColor = .black
         imageView.contentMode = .scaleAspectFit
         
         return imageView
@@ -90,6 +81,20 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
         commonInit()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        resetCellItems()
+    }
+    
+    private func resetCellItems() {
+        rankLabel.text = nil
+        rankOldAndNewLabel.text = nil
+        rankOldAndNewLabel.textColor = .black
+        rankOldAndNewLabel.font = .preferredFont(forTextStyle: .body)
+        titleLabel.text = nil
+        audienceLabel.text = nil
+    }
+    
     func configureCellItems(dailyBoxOfficeModel: BoxOfficeModel ) {
         rankLabel.text = dailyBoxOfficeModel.rank
         rankOldAndNewLabel.text = convertRankOldAndNewLabel(dailyBoxOfficeModel.rankOldAndNew,
@@ -101,32 +106,41 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     private func convertRankOldAndNewLabel(_ rankOldAndNew: RankOldAndNew, _ rankIncrement: String) -> String {
         switch rankOldAndNew {
         case .new:
+            rankOldAndNewLabel.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize)
+            
             return "신작"
         case .old:
             if rankIncrement == "0" {
                 return " -"
             } else if rankIncrement.contains("-") {
-                return "🔻\(rankIncrement.filter { $0 != "-" })"
+                rankOldAndNewLabel.textColor = .systemBlue
+                return "↓ \(rankIncrement.filter { $0 != "-" })"
             }
+            rankOldAndNewLabel.textColor = .systemRed
             
-            return "🔺\(rankIncrement)"
+            return "↑ \(rankIncrement)"
         }
     }
 }
 
 extension BoxOfficeCollectionViewCell: ViewSettingProtocol {
+    func configureView() {
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
+        layer.cornerRadius = 20
+    }
+    
     func configureSubViews() {
-        contentView.addSubview(totalStackView)
+        addSubview(totalStackView)
         [leftVerticalStackView, rightVerticalStackView, accessoryImageView]
             .forEach { totalStackView.addArrangedSubview($0) }
-        [rankLabel, rankStackView].forEach { leftVerticalStackView.addArrangedSubview($0) }
-        [rankUpAndDownImageView, rankOldAndNewLabel].forEach { rankStackView.addArrangedSubview($0) }
+        [rankLabel, rankOldAndNewLabel].forEach { leftVerticalStackView.addArrangedSubview($0) }
         [titleLabel, audienceLabel].forEach { rightVerticalStackView.addArrangedSubview($0) }
     }
     
     func configureLayouts() {
         totalStackView.snp.makeConstraints { make in
-            make.leading.top.trailing.bottom.equalToSuperview()
+            make.edges.equalTo(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
         }
         leftVerticalStackView.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.2)

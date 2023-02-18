@@ -73,9 +73,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		373696E6299CCC6100FE2188 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MyBoxOffice.app; path = "/Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug-iphoneos/MyBoxOffice.app"; sourceTree = "<absolute>"; };
-		373696E7299CCC6100FE2188 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyBoxOfficeTests.xctest; path = /Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug/MyBoxOfficeTests.xctest; sourceTree = "<absolute>"; };
 		373696E8299D0F3700FE2188 /* SearchMovieViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModelTests.swift; sourceTree = "<group>"; };
+		373696EA299D243800FE2188 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MyBoxOffice.app; path = "/Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug-iphoneos/MyBoxOffice.app"; sourceTree = "<absolute>"; };
+		373696EB299D243800FE2188 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyBoxOfficeTests.xctest; path = /Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug/MyBoxOfficeTests.xctest; sourceTree = "<absolute>"; };
 		37DA79DC2990C69B000B5590 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37DA79DE2990C69B000B5590 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		37DA79E02990C69B000B5590 /* BoxOfficeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeListViewController.swift; sourceTree = "<group>"; };
@@ -507,7 +507,7 @@
 				37DA7A74299369D2000B5590 /* SnapKit */,
 			);
 			productName = MyBoxOffice;
-			productReference = 373696E6299CCC6100FE2188 /* MyBoxOffice.app */;
+			productReference = 373696EA299D243800FE2188 /* MyBoxOffice.app */;
 			productType = "com.apple.product-type.application";
 		};
 		37DA7A412990E04B000B5590 /* MyBoxOfficeTests */ = {
@@ -528,7 +528,7 @@
 				37DA7AA92997736A000B5590 /* RxCocoa */,
 			);
 			productName = MyBoxOfficeTests;
-			productReference = 373696E7299CCC6100FE2188 /* MyBoxOfficeTests.xctest */;
+			productReference = 373696EB299D243800FE2188 /* MyBoxOfficeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
