@@ -71,7 +71,7 @@ final class SearMovieResultTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        ImageCacheManager.default.cancel(url: imageUrl)
+        rxImage.shared.cancel(url: imageUrl)
         posterImageView.image = UIImage(named: "placeholder")
     }
     
@@ -85,7 +85,7 @@ final class SearMovieResultTableViewCell: UITableViewCell {
     }
     
     private func configurePosterImage() {
-        ImageCacheManager.default.requestImage(url: imageUrl)
+        rxImage.shared.request(url: imageUrl)
             .subscribe { [weak self] image in
                 self?.posterImageView.image = image
             }.disposed(by: disposeBag)

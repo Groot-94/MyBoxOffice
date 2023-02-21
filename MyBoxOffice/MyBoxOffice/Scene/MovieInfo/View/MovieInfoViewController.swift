@@ -58,7 +58,7 @@ final class MovieInfoViewController: UIViewController {
         
         viewModel.output.postMoviePoster
             .flatMap { url -> Observable<UIImage> in
-                ImageCacheManager.default.requestImage(url: url)
+                rxImage.shared.request(url: url)
             }
             .subscribe (onNext: { [weak self] image in
                 self?.movieInfoView.configureImage(image: image)

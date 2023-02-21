@@ -60,7 +60,7 @@
 		37DA7AF8299A412C000B5590 /* NaverMovieDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AF7299A412C000B5590 /* NaverMovieDTO.swift */; };
 		37DA7AFA299A4349000B5590 /* NaverMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AF9299A4349000B5590 /* NaverMovieModel.swift */; };
 		37DA7AFC299A4F41000B5590 /* SearMovieResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AFB299A4F41000B5590 /* SearMovieResultTableViewCell.swift */; };
-		37DA7AFE299A9717000B5590 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AFD299A9717000B5590 /* ImageCacheManager.swift */; };
+		37DA7AFE299A9717000B5590 /* RxImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AFD299A9717000B5590 /* RxImageCacheManager.swift */; };
 		37DA7B00299B6266000B5590 /* MovieSearchListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DA7AFF299B6266000B5590 /* MovieSearchListDTO.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,7 +125,7 @@
 		37DA7AF7299A412C000B5590 /* NaverMovieDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMovieDTO.swift; sourceTree = "<group>"; };
 		37DA7AF9299A4349000B5590 /* NaverMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMovieModel.swift; sourceTree = "<group>"; };
 		37DA7AFB299A4F41000B5590 /* SearMovieResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearMovieResultTableViewCell.swift; sourceTree = "<group>"; };
-		37DA7AFD299A9717000B5590 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		37DA7AFD299A9717000B5590 /* RxImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxImageCacheManager.swift; sourceTree = "<group>"; };
 		37DA7AFF299B6266000B5590 /* MovieSearchListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchListDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -335,7 +335,7 @@
 		37DA7A72299366C1000B5590 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				37DA7AFD299A9717000B5590 /* ImageCacheManager.swift */,
+				37DA7AFD299A9717000B5590 /* RxImageCacheManager.swift */,
 				37DA7A0C2990D2D9000B5590 /* NetworkManager.swift */,
 			);
 			path = Manager;
@@ -630,7 +630,7 @@
 				37DA7AFC299A4F41000B5590 /* SearMovieResultTableViewCell.swift in Sources */,
 				370DA3E529A481C800EDB155 /* CustomTapBarCollectionViewCell.swift in Sources */,
 				37DA7AEF299A12B3000B5590 /* SearchMovieCoodinator.swift in Sources */,
-				37DA7AFE299A9717000B5590 /* ImageCacheManager.swift in Sources */,
+				37DA7AFE299A9717000B5590 /* RxImageCacheManager.swift in Sources */,
 				37DA7A9D299767B5000B5590 /* MovieInfoModel.swift in Sources */,
 				37DA7AAC2997DFA1000B5590 /* MovieInfoView.swift in Sources */,
 				37DA7A7B29936E7D000B5590 /* ViewSettingProtocol.swift in Sources */,
