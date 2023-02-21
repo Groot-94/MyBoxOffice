@@ -42,7 +42,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let rankOldAndNewLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .footnote)
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
         
         return label
@@ -57,7 +57,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let audienceLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .footnote)
         
         return label
     }()
@@ -90,7 +90,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
         rankLabel.text = nil
         rankOldAndNewLabel.text = nil
         rankOldAndNewLabel.textColor = .black
-        rankOldAndNewLabel.font = .preferredFont(forTextStyle: .body)
+        rankOldAndNewLabel.font = .preferredFont(forTextStyle: .footnote)
         titleLabel.text = nil
         audienceLabel.text = nil
     }
@@ -100,13 +100,13 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
         rankOldAndNewLabel.text = convertRankOldAndNewLabel(dailyBoxOfficeModel.rankOldAndNew,
                                                             dailyBoxOfficeModel.rankIncrement)
         titleLabel.text = dailyBoxOfficeModel.movieName
-        audienceLabel.text = "관객수 : 오늘 \(dailyBoxOfficeModel.audienceCount.convertToDecimal) / 총 \(dailyBoxOfficeModel.audienceAccumulate.convertToDecimal)"
+        audienceLabel.text = "관객수 : 당일 \(dailyBoxOfficeModel.audienceCount.convertToDecimal) / 총 \(dailyBoxOfficeModel.audienceAccumulate.convertToDecimal)"
     }
     
     private func convertRankOldAndNewLabel(_ rankOldAndNew: RankOldAndNew, _ rankIncrement: String) -> String {
         switch rankOldAndNew {
         case .new:
-            rankOldAndNewLabel.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize)
+            rankOldAndNewLabel.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .footnote).pointSize)
             
             return "신작"
         case .old:
@@ -140,7 +140,7 @@ extension BoxOfficeCollectionViewCell: ViewSettingProtocol {
     
     func configureLayouts() {
         totalStackView.snp.makeConstraints { make in
-            make.edges.equalTo(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
+            make.edges.equalTo(UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8))
         }
         leftVerticalStackView.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.1)

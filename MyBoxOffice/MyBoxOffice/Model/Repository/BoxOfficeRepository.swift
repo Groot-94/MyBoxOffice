@@ -10,6 +10,7 @@ import RxSwift
 
 protocol BoxOfficeRepository {
     func readDailyBoxOffice(date: Date, itemPerPage: String?) -> Observable<[BoxOfficeModel]>
+    func readWeeklyBoxOffice(date: Date, standard: String, itemPerPage: String?) -> Observable<[BoxOfficeModel]>
     func readMovieInfo(endPoint: BoxOfficeEndPoint) -> Observable<MovieInfoModel>
     func readMovieCode(movieName: String) -> Observable<String>
 }
@@ -25,8 +26,21 @@ extension BoxOfficeRepository {
                                                                                     itemPerPage: itemPerPage))
         
         return netWorkManager.requestGetAPI(url: endPoint.url, parameters: endPoint.parameters)
-            .decode(type: BoxOfficeDTO.self, decoder: JSONDecoder())
+            .decode(type: DailyBoxOfficeDTO.self, decoder: JSONDecoder())
             .map { $0.boxOfficeResult.dailyBoxOfficeList.map { $0.toDomain() } }
+    }
+    
+    func readWeeklyBoxOffice(date: Date, standard: String ,itemPerPage: String? = nil) -> Observable<[BoxOfficeModel]> {
+        let yesterdayDate = date.yesterday
+        let weekGroup: BoxOfficeListParameters.WeekGb? = BoxOfficeListParameters.WeekGb(rawValue: standard)
+        let parameters = BoxOfficeListParameters(targetDate: yesterdayDate,
+                                                 weekGb: weekGroup,
+                                                 itemPerPage: itemPerPage)
+        let endPoint: BoxOfficeEndPoint = .weeklyBoxOfficeList(parameters)
+        
+        return netWorkManager.requestGetAPI(url: endPoint.url, parameters: endPoint.parameters)
+            .decode(type: WeeklyBoxOfficeDTO.self, decoder: JSONDecoder())
+            .map { $0.boxOfficeResult.weeklyBoxOfficeList.map { $0.toDomain() } }
     }
     
     func readMovieInfo(endPoint: BoxOfficeEndPoint) -> Observable<MovieInfoModel> {

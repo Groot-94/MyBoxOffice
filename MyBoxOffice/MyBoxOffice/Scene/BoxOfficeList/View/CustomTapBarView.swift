@@ -16,6 +16,7 @@ final class CustomTapBarView: UIView {
     weak var delegate: CustomTapBarViewDelegate?
     var indicatorViewLeadingConstraint:NSLayoutConstraint!
     var indicatorViewWidthConstraint: NSLayoutConstraint!
+    private var currentSelectedIndexPath = IndexPath(row: 0, section: 0)
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -71,7 +72,7 @@ final class CustomTapBarView: UIView {
         collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: self.frame.width / 2)
+        indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: self.frame.width / 3)
         indicatorViewWidthConstraint.isActive = true
         indicatorView.heightAnchor.constraint(equalToConstant: 3).isActive = true
         indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
@@ -82,7 +83,7 @@ final class CustomTapBarView: UIView {
 
 extension CustomTapBarView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -96,14 +97,16 @@ extension CustomTapBarView: UICollectionViewDataSource {
 
 extension CustomTapBarView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        guard currentSelectedIndexPath != indexPath else { return }
+        
         delegate?.didTapCell(indexPath: indexPath)
+        currentSelectedIndexPath = indexPath
     }
 }
 
 extension CustomTapBarView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width / 2, height: 20)
+        return CGSize(width: self.frame.width / 3, height: 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

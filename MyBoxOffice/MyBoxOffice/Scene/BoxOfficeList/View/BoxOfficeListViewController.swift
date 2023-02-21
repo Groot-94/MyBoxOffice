@@ -131,8 +131,8 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
     
     func configureTapView() {
         tapBarView.delegate = self
-        tapBarView.tabMenuList = ["일별", "주간"]
-        tapBarView.indicatorViewWidthConstraint.constant = view.frame.width / 2
+        tapBarView.tabMenuList = ["일별", "주간", "주말"]
+        tapBarView.indicatorViewWidthConstraint.constant = view.frame.width / 3
     }
     
     func configureLayouts() {
@@ -167,10 +167,17 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
 
 extension BoxOfficeListViewController: CustomTapBarViewDelegate {
     func didTapCell(indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            tapBarView.indicatorViewLeadingConstraint.constant = tapBarView.frame.maxX / 2
-        } else {
+        startLodingView(hideView: listView)
+        
+        if indexPath.row == 0 {
+            viewModel.input.changeWeekGroup(standard: .daliy)
             tapBarView.indicatorViewLeadingConstraint.constant = 0
+        } else if indexPath.row == 1 {
+            viewModel.input.changeWeekGroup(standard: .week)
+            tapBarView.indicatorViewLeadingConstraint.constant = tapBarView.frame.maxX * 1/3
+        } else if indexPath.row == 2 {
+            viewModel.input.changeWeekGroup(standard: .weekend)
+            tapBarView.indicatorViewLeadingConstraint.constant = tapBarView.frame.maxX * 2/3
         }
     }
 }

@@ -10,6 +10,7 @@ import Alamofire
 
 enum BoxOfficeEndPoint {
     case dailyBoxOfficeList(BoxOfficeListParameters)
+    case weeklyBoxOfficeList(BoxOfficeListParameters)
     case movieInfo(MovieParameters)
     case movieList(MovieListParameters)
     
@@ -21,6 +22,8 @@ enum BoxOfficeEndPoint {
         switch self {
         case .dailyBoxOfficeList:
             return "boxoffice/searchDailyBoxOfficeList.json"
+        case .weeklyBoxOfficeList:
+            return "boxoffice/searchWeeklyBoxOfficeList.json"
         case .movieInfo:
             return "movie/searchMovieInfo.json"
         case .movieList:
@@ -36,6 +39,8 @@ enum BoxOfficeEndPoint {
         switch self {
         case .dailyBoxOfficeList(let boxOfficeListParameters):
             return boxOfficeListParameters.parameters
+        case .weeklyBoxOfficeList(let boxOfficeListParameters):
+            return boxOfficeListParameters.parameters
         case .movieInfo(let movieParameters):
             return movieParameters.parameters
         case .movieList(let movieListParameters):
@@ -47,6 +52,7 @@ enum BoxOfficeEndPoint {
 struct BoxOfficeListParameters {
     private let key: String
     private let targetDate: String
+    private var weekGb: WeekGb?
     private var itemPerPage: String?
     private var multiMovieYn: MultiMovieYn?
     private var repNationCd: RepNationCd?
@@ -54,12 +60,14 @@ struct BoxOfficeListParameters {
     
     init(key: String = BoxOfficePrivateKey.value ,
          targetDate: String,
+         weekGb: WeekGb? = nil,
          itemPerPage: String? = nil,
          multiMovieYn: MultiMovieYn? = nil,
          repNationCd: RepNationCd? = nil,
          wideAreaCd: String? = nil) {
         self.key = key
         self.targetDate = targetDate
+        self.weekGb = weekGb
         self.itemPerPage = itemPerPage
         self.multiMovieYn = multiMovieYn
         self.repNationCd = repNationCd
@@ -70,6 +78,7 @@ struct BoxOfficeListParameters {
         [
             "key": key,
             "targetDt": targetDate,
+            "weekGb": weekGb?.value ?? "",
             "itemPerPage": itemPerPage ?? "",
             "multiMovieYn": multiMovieYn?.value ?? "",
             "repNationCd": repNationCd?.value ?? "",
@@ -77,31 +86,31 @@ struct BoxOfficeListParameters {
         ]
     }
     
-    enum MultiMovieYn {
-        case yes
-        case no
+    enum MultiMovieYn: String {
+        case yes = "Y"
+        case no = "N"
         
         var value: String {
-            switch self {
-            case .yes:
-                return "Y"
-            case .no:
-                return "N"
-            }
+           rawValue
         }
     }
     
-    enum RepNationCd {
-        case korea
-        case foreign
+    enum RepNationCd: String {
+        case korea = "K"
+        case foreign = "F"
         
         var value: String {
-            switch self {
-            case .korea:
-                return "K"
-            case .foreign:
-                return "F"
-            }
+            rawValue
+        }
+    }
+    
+    enum WeekGb: String {
+        case week = "0"
+        case weekend = "1"
+        case weekday = "2"
+        
+        var value: String {
+            rawValue
         }
     }
 }

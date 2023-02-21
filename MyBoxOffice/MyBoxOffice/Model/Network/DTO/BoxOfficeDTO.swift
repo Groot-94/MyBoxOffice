@@ -5,17 +5,28 @@
 //  Created by Groot on 2023/02/06.
 //
 
-struct BoxOfficeDTO: Decodable {
-    let boxOfficeResult: BoxOfficeResultDTO
+struct DailyBoxOfficeDTO: Decodable {
+    let boxOfficeResult: DailyBoxOfficeResultDTO
 }
 
-struct BoxOfficeResultDTO: Decodable {
+struct DailyBoxOfficeResultDTO: Decodable {
     let boxofficeType: String
     let showRange: String
-    let dailyBoxOfficeList: [DailyBoxOfficeDTO]
+    let dailyBoxOfficeList: [BoxOfficeListDTO]
 }
 
-struct DailyBoxOfficeDTO: Decodable{
+struct WeeklyBoxOfficeDTO: Decodable {
+    let boxOfficeResult: WeeklyBoxOfficeResultDTO
+}
+
+struct WeeklyBoxOfficeResultDTO: Decodable {
+    let boxofficeType: String
+    let showRange: String?
+    let yearWeekTime: String?
+    let weeklyBoxOfficeList: [BoxOfficeListDTO]
+}
+
+struct BoxOfficeListDTO: Decodable{
     let rnum: String
     let rank: String
     let rankInten: String
@@ -36,7 +47,7 @@ struct DailyBoxOfficeDTO: Decodable{
     let showCnt: String
 }
 
-extension DailyBoxOfficeDTO {
+extension BoxOfficeListDTO {
     func toDomain() -> BoxOfficeModel {
         BoxOfficeModel(rank: self.rank,
                        rankIncrement: self.rankInten,
