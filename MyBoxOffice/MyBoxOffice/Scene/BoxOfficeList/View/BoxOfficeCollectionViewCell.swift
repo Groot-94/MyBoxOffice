@@ -88,11 +88,11 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private func resetCellItems() {
         rankLabel.text = nil
+        titleLabel.text = nil
+        audienceLabel.text = nil
         rankOldAndNewLabel.text = nil
         rankOldAndNewLabel.textColor = .black
         rankOldAndNewLabel.font = .preferredFont(forTextStyle: .footnote)
-        titleLabel.text = nil
-        audienceLabel.text = nil
     }
     
     func configureCellItems(dailyBoxOfficeModel: BoxOfficeModel ) {
@@ -100,7 +100,9 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
         rankOldAndNewLabel.text = convertRankOldAndNewLabel(dailyBoxOfficeModel.rankOldAndNew,
                                                             dailyBoxOfficeModel.rankIncrement)
         titleLabel.text = dailyBoxOfficeModel.movieName
-        audienceLabel.text = "관객수 : 당일 \(dailyBoxOfficeModel.audienceCount.convertToDecimal) / 총 \(dailyBoxOfficeModel.audienceAccumulate.convertToDecimal)"
+        let audienceCount = dailyBoxOfficeModel.audienceCount.convertToDecimal
+        let audienceAccumulate = dailyBoxOfficeModel.audienceAccumulate.convertToDecimal
+        audienceLabel.text = "관객수 : 당일 \(audienceCount) / 총 \(audienceAccumulate)"
     }
     
     private func convertRankOldAndNewLabel(_ rankOldAndNew: RankOldAndNew, _ rankIncrement: String) -> String {

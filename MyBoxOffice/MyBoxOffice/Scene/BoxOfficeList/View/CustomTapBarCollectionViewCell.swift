@@ -35,16 +35,18 @@ final class CustomTapBarCollectionViewCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        configureView()
+        configureSubview()
         configureLayout()
     }
     
-    private func configureView() {
+    private func configureSubview() {
         addSubview(titleLabel)
     }
     
     private func configureLayout() {
-        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
     }
 }

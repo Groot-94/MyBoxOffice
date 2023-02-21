@@ -48,10 +48,10 @@ final class SearchMovieViewController: UIViewController {
             }.disposed(by: disposeBag)
         
         viewModel.output.postMovieCodeSearchResult
-            .subscribe { [weak self] movieCode in
+            .subscribe(onNext: { [weak self] movieCode in
                 self?.coodinator?.showMovieInfo(movieCode: movieCode)
                 self?.isSelectedCell = false
-            }.disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         listView.rx.modelSelected(NaverMovieModel.self)
             .subscribe(onNext: { [weak self] model in
@@ -60,8 +60,7 @@ final class SearchMovieViewController: UIViewController {
                 
                 self.viewModel.input.didTapCell(model: model)
                 self.isSelectedCell = true
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         listView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in

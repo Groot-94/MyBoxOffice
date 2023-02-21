@@ -14,7 +14,7 @@ protocol CustomTapBarViewDelegate: NSObject {
 final class CustomTapBarView: UIView {
     var tabMenuList: [String]?
     weak var delegate: CustomTapBarViewDelegate?
-    var indicatorViewLeadingConstraint:NSLayoutConstraint!
+    var indicatorViewLeadingConstraint: NSLayoutConstraint!
     var indicatorViewWidthConstraint: NSLayoutConstraint!
     private var currentSelectedIndexPath = IndexPath(row: 0, section: 0)
     
@@ -25,7 +25,8 @@ final class CustomTapBarView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
-        collectionView.register(CustomTapBarCollectionViewCell.self, forCellWithReuseIdentifier: "CustomTapBarCollectionViewCell")
+        collectionView.register(CustomTapBarCollectionViewCell.self,
+                                forCellWithReuseIdentifier: "CustomTapBarCollectionViewCell")
         
         return collectionView
     }()
@@ -68,16 +69,20 @@ final class CustomTapBarView: UIView {
     }
     
     private func configureLayout() {
-        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant: 20)
+        ])
         indicatorViewWidthConstraint = indicatorView.widthAnchor.constraint(equalToConstant: self.frame.width / 3)
-        indicatorViewWidthConstraint.isActive = true
-        indicatorView.heightAnchor.constraint(equalToConstant: 3).isActive = true
         indicatorViewLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
-        indicatorViewLeadingConstraint.isActive = true
-        indicatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            indicatorViewWidthConstraint,
+            indicatorViewLeadingConstraint,
+            indicatorView.heightAnchor.constraint(equalToConstant: 3),
+            indicatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
 }
 
@@ -87,7 +92,9 @@ extension CustomTapBarView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomTapBarCollectionViewCell", for: indexPath) as? CustomTapBarCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomTapBarCollectionViewCell",
+                                                            for: indexPath) as? CustomTapBarCollectionViewCell
+        else { return UICollectionViewCell() }
         
         cell.titleLabel.text = tabMenuList?[indexPath.row]
         
@@ -105,15 +112,21 @@ extension CustomTapBarView: UICollectionViewDelegate {
 }
 
 extension CustomTapBarView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.frame.width / 3, height: 20)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 }
