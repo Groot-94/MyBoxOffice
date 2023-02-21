@@ -14,6 +14,7 @@ final class BoxOfficeListViewController: UIViewController {
     weak var coodinator: BoxOfficeListCoodinator?
     private let viewModel: BoxOfficeViewModelable
     private let disposeBag = DisposeBag()
+    private let tapBarView = CustomTapBarView()
     private let listView = BoxOfficeListView()
     private let refreshControl = UIRefreshControl()
     let backgroundView = UIView()
@@ -122,14 +123,27 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
     }
     
     func configureSubViews() {
+        view.addSubview(tapBarView)
         view.addSubview(listView)
         configureLodingView(superView: view)
+        configureTapView()
+    }
+    
+    func configureTapView() {
+        tapBarView.delegate = self
+        tapBarView.tabMenuList = ["일별", "주간"]
+        tapBarView.indicatorViewWidthConstraint.constant = view.frame.width / 2
     }
     
     func configureLayouts() {
+        NSLayoutConstraint.activate([
+            tapBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            tapBarView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tapBarView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tapBarView.heightAnchor.constraint(lessThanOrEqualToConstant: 32)])
         listView.listCollectionView.setCollectionViewLayout(createListLayout(), animated: true)
         listView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(tapBarView.snp.bottom).offset(8)
             make.bottom.equalTo(view.snp.bottom)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
@@ -148,5 +162,15 @@ extension BoxOfficeListViewController: ViewSettingProtocol, LodingViewProtocol {
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         return layout
+    }
+}
+
+extension BoxOfficeListViewController: CustomTapBarViewDelegate {
+    func didTapCell(indexPath: IndexPath) {
+        if indexPath.row == 1 {
+            tapBarView.indicatorViewLeadingConstraint.constant = tapBarView.frame.maxX / 2
+        } else {
+            tapBarView.indicatorViewLeadingConstraint.constant = 0
+        }
     }
 }

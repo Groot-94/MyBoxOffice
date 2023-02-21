@@ -34,7 +34,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let rankLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = .preferredFont(forTextStyle: .title2)
         label.setContentHuggingPriority(.required, for: .vertical)
         
         return label
@@ -50,7 +50,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .title2).pointSize)
+        label.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .title3).pointSize)
         
         return label
     }()
@@ -100,7 +100,7 @@ final class BoxOfficeCollectionViewCell: UICollectionViewCell {
         rankOldAndNewLabel.text = convertRankOldAndNewLabel(dailyBoxOfficeModel.rankOldAndNew,
                                                             dailyBoxOfficeModel.rankIncrement)
         titleLabel.text = dailyBoxOfficeModel.movieName
-        audienceLabel.text = "오늘 \(dailyBoxOfficeModel.audienceCount.convertToDecimal) / 총 \(dailyBoxOfficeModel.audienceAccumulate.convertToDecimal)"
+        audienceLabel.text = "관객수 : 오늘 \(dailyBoxOfficeModel.audienceCount.convertToDecimal) / 총 \(dailyBoxOfficeModel.audienceAccumulate.convertToDecimal)"
     }
     
     private func convertRankOldAndNewLabel(_ rankOldAndNew: RankOldAndNew, _ rankIncrement: String) -> String {
@@ -143,7 +143,7 @@ extension BoxOfficeCollectionViewCell: ViewSettingProtocol {
             make.edges.equalTo(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
         }
         leftVerticalStackView.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.2)
+            make.width.equalToSuperview().multipliedBy(0.1)
         }
         accessoryImageView.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.03)

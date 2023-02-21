@@ -11,8 +11,8 @@ import SnapKit
 final class BoxOfficeListView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .title2).pointSize)
-        label.text = "일별 박스오피스"
+        label.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .title1).pointSize)
+        label.text = "박스오피스"
         
         return label
     }()
