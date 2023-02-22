@@ -75,8 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		370DA3E029A47C4300EDB155 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBoxOffice.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		370DA3E129A47C4300EDB155 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBoxOfficeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		370DA3E029A47C4300EDB155 /* MyBoxOffice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = MyBoxOffice.app; path = "/Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug-iphoneos/MyBoxOffice.app"; sourceTree = "<absolute>"; };
+		370DA3E129A47C4300EDB155 /* MyBoxOfficeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MyBoxOfficeTests.xctest; path = /Users/NAMU/Documents/Portfolio/MyBoxOffice/MyBoxOffice/build/Debug/MyBoxOfficeTests.xctest; sourceTree = "<absolute>"; };
 		370DA3E229A4814B00EDB155 /* CustomTapBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTapBarView.swift; sourceTree = "<group>"; };
 		370DA3E429A481C800EDB155 /* CustomTapBarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTapBarCollectionViewCell.swift; sourceTree = "<group>"; };
 		373696E8299D0F3700FE2188 /* SearchMovieViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModelTests.swift; sourceTree = "<group>"; };
@@ -158,8 +158,6 @@
 			children = (
 				37DA79DB2990C69A000B5590 /* MyBoxOffice */,
 				37DA7A432990E04B000B5590 /* MyBoxOfficeTests */,
-				370DA3E029A47C4300EDB155 /* MyBoxOffice.app */,
-				370DA3E129A47C4300EDB155 /* MyBoxOfficeTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};

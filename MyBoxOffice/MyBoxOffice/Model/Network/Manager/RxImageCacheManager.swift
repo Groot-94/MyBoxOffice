@@ -54,6 +54,10 @@ fileprivate actor ImageCacheManager {
         
         guard let url = URL(string: key) else { throw ImageCacheError.invalidURL }
         
+        if tasks[key] != nil {
+            return try await tasks[key]?.value
+        }
+        
         let task = Task {
             try await requestImage(url: url)
         }
@@ -63,9 +67,8 @@ fileprivate actor ImageCacheManager {
         
         guard let image = try await task.value else { return nil }
         
-        if let oldImage = cacheManager.object(forKey: NSString(string: key)),
-           oldImage != image {
-            return cacheManager.object(forKey: NSString(string: key))
+        if let oldImage = cacheManager.object(forKey: NSString(string: key)) {
+            return oldImage
         }
         
         cacheManager.setObject(image, forKey: NSString(string: key))
