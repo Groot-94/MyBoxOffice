@@ -1,15 +1,19 @@
-# README
-# 📒 프로젝트 이름
+# 📒 MyBoxOffice
 
 ### 프로젝트 기간
 <2023-02-06 ~ >
 
 ## 📖 목차
 [소개](#-소개)
+
 [실행 화면](#-실행-화면)
+
 [키워드](#키워드)
+
 [고민한 점](#-고민한-점)
+
 [트러블 슈팅](#-트러블-슈팅)
+
 [참고 링크](#-참고-링크)
 
 ## 소개
@@ -74,9 +78,12 @@
     1. List Coodinator를 중심으로 화면이동이 필요한 Info Coodinator, Calender Coodinator, Search Coodinator를 Child로 구현했습니다.
     2. Search Coodinator도 영화의 정보를 보여줘야 하기 때문에 Info Coodinator를 Child로 구현했습니다.
     3. 구현한 Coodinator 패턴이 적절한지에 대한 의문이 생겼고, 어떤 부분에서 장점이 되는지 아직 잘 모르겠습니다.
-
-![](https://i.imgur.com/SkBLmP8.png)
-
+---
+    
+<img src = "https://i.imgur.com/SkBLmP8.png" width="700" height="250">
+    
+---
+    
 </details> 
 
 <details>
