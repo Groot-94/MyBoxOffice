@@ -1,20 +1,15 @@
-# 📒 MyBoxOffice
+# 📒 프로젝트 이름
 
 ### 프로젝트 기간
 <2023-02-06 ~ >
 
 ## 📖 목차
-[소개](#-소개)
-
-[실행 화면](#-실행-화면)
-
-[키워드](#키워드)
-
-[고민한 점](#-고민한-점)
-
-[트러블 슈팅](#-트러블-슈팅)
-
-[참고 링크](#-참고-링크)
+- [소개](#-소개)
+- [실행 화면](#-실행-화면)
+- [키워드](#키워드)
+- [고민한 점](#-고민한-점)
+- [트러블 슈팅](#-트러블-슈팅)
+- [참고 링크](#-참고-링크)
 
 ## 소개
 ### 개발환경 및 라이브러리
@@ -78,12 +73,9 @@
     1. List Coodinator를 중심으로 화면이동이 필요한 Info Coodinator, Calender Coodinator, Search Coodinator를 Child로 구현했습니다.
     2. Search Coodinator도 영화의 정보를 보여줘야 하기 때문에 Info Coodinator를 Child로 구현했습니다.
     3. 구현한 Coodinator 패턴이 적절한지에 대한 의문이 생겼고, 어떤 부분에서 장점이 되는지 아직 잘 모르겠습니다.
----
-    
-<img src = "https://i.imgur.com/SkBLmP8.png" width="700" height="250">
-    
----
-    
+
+    <img src = "https://i.imgur.com/SkBLmP8.png" width="700" height="250">
+
 </details> 
 
 <details>
@@ -96,6 +88,38 @@
     
 </details>
 
+<details>
+
+**<summary>일별, 주간, 주말 박스오피스를 분리하기 위해 상단에 TabBar를 구현하는 방법**
+
+</summary>
+    
+- UIKit에 존재하는 기본 TabBar는 하단에만 구현이 가능하지만, 당근마켓과 같은 앱에서 상단에 TabBar가 존재함을 보고 커스텀해서 만들어보고 싶었습니다.
+  
+    - [블로그](https://baked-corn.tistory.com/111)를 참고해서 컬렉션뷰 하단에 indicatorView를 구현해서 각각의 클릭 이벤트를 입력받을 시 indicatorView 위치를 적절하게 변경하는 방법으로 구현했습니다.
+    - 위 블로그에선 컬렉션뷰 내부에 컬렉션 뷰를 넣는 부분이 있었는데 `일별, 주간, 주말을 각각의 셀로 나누는 방법이 아니라 하나의 뷰가 새로고침 되는 형태로 바꾸기 위한 방법을 고민`했습니다.
+    - 셀 클릭 시 View의 Frame을 3분의 1로 나눈 부분으로 indicatorView를 옮겨주는 형태로 구현했습니다.
+    ```swift
+    extension BoxOfficeListViewController: CustomTapBarViewDelegate {
+        func didTapCell(indexPath: IndexPath) {
+            startLodingView(hideView: listView)
+
+            if indexPath.row == 0 {
+                viewModel.input.changeWeekGroup(standard: .daliy)
+                tapBarView.indicatorViewLeadingConstraint.constant = 0
+            } else if indexPath.row == 1 {
+                viewModel.input.changeWeekGroup(standard: .week)
+                tapBarView.indicatorViewLeadingConstraint.constant = tapBarView.frame.maxX * 1/3
+            } else if indexPath.row == 2 {
+                viewModel.input.changeWeekGroup(standard: .weekend)
+                tapBarView.indicatorViewLeadingConstraint.constant = tapBarView.frame.maxX * 2/3
+            }
+        }
+    }
+    ```
+    
+</details>
+
 ## 트러블 슈팅
 <details>
 
@@ -104,7 +128,7 @@
 </summary>
     
 - 영화검색 화면에서 검색 한 영화의 셀을 여러번 클릭 시 상세화면으로 넘어가는 부분을 비동기 방식으로 설계했습니다.
-- 동일한 셀을 여러번 클릭 시 화면이동이 비동기적으로 일어나면서 중복적인 호출로 인해 스택 형식으로 상세화면이 쌓이는 문제가 있었습니다.
+- 동일한 셀을 여러번 클릭 시 뷰 이동 함수의 중복적인 호출로 인해 스택 형식으로 상세화면이 쌓이는 문제가 있었습니다.
    
     - 문제화면
     <img src = "https://i.imgur.com/CZX7TGs.gif" width="250" height="400">
@@ -121,7 +145,7 @@
                 .disposed(by: disposeBag)
     ```
     
-    2.  isSelectedCell 이라는 전역변수를 추가해서 확인하는 방법으로 해결했습니다.
+    2.  isSelectedCell 이라는 전역변수를 추가해서 확인하는 방법으로 해결했습니다. `이 부분은 추후에 조금 더 RxSwift를 활용한 방식으로 수정을 해보려고 합니다.`
     ```swift
     listView.rx.modelSelected(NaverMovieModel.self)
             .subscribe(onNext: { [weak self] model in
