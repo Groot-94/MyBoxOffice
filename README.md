@@ -73,9 +73,9 @@
     1. List Coodinator를 중심으로 화면이동이 필요한 Info Coodinator, Calender Coodinator, Search Coodinator를 Child로 구현했습니다.
     2. Search Coodinator도 영화의 정보를 보여줘야 하기 때문에 Info Coodinator를 Child로 구현했습니다.
     3. 구현한 Coodinator 패턴이 적절한지에 대한 의문이 생겼고, 어떤 부분에서 장점이 되는지 아직 잘 모르겠습니다.
-
+    4. 구조
     <img src = "https://i.imgur.com/SkBLmP8.png" width="700" height="250">
-
+    
 </details> 
 
 <details>
