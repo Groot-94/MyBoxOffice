@@ -35,7 +35,7 @@ final class RxImageCacheManager {
     
     func cancelAll() {
         Task {
-            await ImageCacheManager.shared.canelAll()
+            await ImageCacheManager.shared.cancelAll()
         }
     }
 }
@@ -97,7 +97,7 @@ fileprivate actor ImageCacheManager {
         tasks[url] = nil
     }
     
-    func canelAll() {
+    func cancelAll() {
         tasks.forEach { $0.value.cancel() }
         tasks.removeAll()
     }

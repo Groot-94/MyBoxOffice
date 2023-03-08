@@ -12,7 +12,7 @@ final class BoxOfficeDecodeTests: XCTestCase {
     func test_BoxOfficeDTO_Parsing_Dummy() {
         //given
         let data = MockNetworkData(fileName: "Box_Office_Sample").data ?? Data()
-        let movieNm = try? JSONDecoder().decode(BoxOfficeDTO.self, from: data)
+        let movieNm = try? JSONDecoder().decode(DailyBoxOfficeDTO.self, from: data)
             .boxOfficeResult
             .dailyBoxOfficeList[0].movieNm
         

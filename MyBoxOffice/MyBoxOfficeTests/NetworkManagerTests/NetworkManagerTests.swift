@@ -25,13 +25,11 @@ final class NetworkManagerTests: XCTestCase {
         var movieNm: String?
         let url = "MockDailyBoxOfficeURL"
         networkManager.requestGetAPI(url: url)
-            .decode(type: BoxOfficeDTO.self, decoder: JSONDecoder())
-            .subscribe { event in
-                guard let data = event.element else { return }
-                
+            .decode(type: DailyBoxOfficeDTO.self, decoder: JSONDecoder())
+            .subscribe(onNext: { data in
                 movieNm = data.boxOfficeResult.dailyBoxOfficeList.first?.movieNm
                 expectation.fulfill()
-            }.disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         //when
         let result = "경관의 피"
